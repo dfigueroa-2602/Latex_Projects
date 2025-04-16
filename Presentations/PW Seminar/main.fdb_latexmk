@@ -1,11 +1,11 @@
 # Fdb version 4
-["biber main"] 1744804477.1383 "main.bcf" "main.bbl" "main" 1744804577.67896 0
-  "main.bcf" 1744804577 107316 6ab01a2b840bb6387288e3116805ce5d "pdflatex"
+["biber main"] 1744804477.1383 "main.bcf" "main.bbl" "main" 1744807605.72448 0
+  "main.bcf" 1744807605 107316 6ab01a2b840bb6387288e3116805ce5d "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1744804574.88643 "c:/Users/Dave/Documents/git/Latex_Projects/Presentations/PW Seminar/main.tex" "main.pdf" "main" 1744804577.67937 0
+["pdflatex"] 1744807602.88237 "c:/Users/Dave/Documents/git/Latex_Projects/Presentations/PW Seminar/main.tex" "main.pdf" "main" 1744807605.72489 0
   "C:/Users/Dave/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1744804135 81088 29d6fa367ac022d1b69251d68c0742e6 ""
   "C:/Users/Dave/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1744804095 13147729 e852e848acfad9093d39a3e411e9df18 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc" 1256929440 2327 9d6df24f9c4f7368395224341a95523a ""
@@ -330,15 +330,15 @@
   "Images/USM.jpg" 1744793638 1403833 481665249472d9b48d6fcbb7d24ea0cb ""
   "Images/Variables_Exp_118.eps" 1744793636 369997 dfdcce2c324fc65d9133e686c09e3e6d ""
   "Packages.tex" 1744793636 313 33a3b9ea7e1c7e25ba036824dc9773cd ""
-  "Presentation.tex" 1744793636 13096 b60b47bc3159fe4791aea441fa9126f1 ""
+  "Presentation.tex" 1744807602 13182 f888f0023e07717c57ba0d9acc32bc26 ""
   "c:/Users/Dave/Documents/git/Latex_Projects/Presentations/PW Seminar/main.tex" 1744804386 155 c8b99e16d23bc8e7df4b2b40c9e936f6 ""
-  "main.aux" 1744804577 6804 6e716b16f377807b9c458ddfb3645060 "pdflatex"
+  "main.aux" 1744807605 6934 6639aac2f375baca2015e1219dfaeee9 "pdflatex"
   "main.bbl" 1744804478 486 76d65a242ec496c9b4361af646ff12cb "biber main"
-  "main.nav" 1744804577 4097 9def5578dc77e889eec2a1da6e5645f0 "pdflatex"
-  "main.out" 1744804577 103 47949ac7c3dcedddeefe3cd50587dda1 "pdflatex"
-  "main.run.xml" 1744804577 2395 395fc36eaa6d19cafd68c61df92ebbe4 "pdflatex"
+  "main.nav" 1744807605 4191 c301ef49581470947b08a5eac2cd2818 "pdflatex"
+  "main.out" 1744807605 103 47949ac7c3dcedddeefe3cd50587dda1 "pdflatex"
+  "main.run.xml" 1744807605 2395 395fc36eaa6d19cafd68c61df92ebbe4 "pdflatex"
   "main.tex" 1744804386 155 c8b99e16d23bc8e7df4b2b40c9e936f6 ""
-  "main.toc" 1744804577 596 066ff7550ec26a04b5822f5be6fd3ae4 "pdflatex"
+  "main.toc" 1744807605 596 5f161a283c1f437e64e7313312b3aec0 "pdflatex"
   (generated)
   "main.aux"
   "main.bcf"
