@@ -1,0 +1,288 @@
+\AtBeginSection[]{
+    \begin{frame}
+        \setcounter{tocdepth}{1} % Show only sections
+        \frametitle{Presentation Overview}
+        \tableofcontents[currentsection]
+    \end{frame}
+}
+
+\begin{frame}{Researcher Biography}
+    \begin{columns}
+        \column{0.5\textwidth}
+            \begin{itemize}
+                \item \textbf{Name: }Dave Figueroa
+                \item \textbf{Grade:} M.Sc. Electronics Engineer, Federico Santa Maria Technical University (UTFSM), Valparaíso, Chile.
+                \item \textbf{Research Interests:} AC microgrids, DC microgrids, partial power converters, vectorial control for AC machines drives and optimal control.
+            \end{itemize}
+        \column{0.5\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{Images/Me.png}
+            \end{figure}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Researcher Biography (continued)}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \textbf{Education:}
+            \begin{itemize}
+                \item B.Sc Electronics Engineering
+                \begin{itemize}
+                    \item 2018 - 2022
+                    \item UTFSM, Valparaíso, Chile
+                \end{itemize}
+                \item Curricular Exchange Program
+                \begin{itemize}
+                    \item February - July, 2023
+                    \item Akademia Górtniczo Hutnicza, Kraków, Poland
+                \end{itemize}
+                \item M.Sc in Electronics Engineering
+                \begin{itemize}
+                    \item 2022 - 2024
+                    \item UTFSM, Valparaíso, Chile
+                \end{itemize}
+            \end{itemize}
+        \column{0.5\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.5\linewidth]{Images/USM.jpg}
+            \end{figure}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Master's Thesis Topic}
+    \begin{columns}
+        \column{0.5\textwidth}
+            \textbf{Model-based Predictive Control for a Grid-connected Distributed Energy Resource LCL Filter}\\
+            Supervised by: \textit{Dr. César A. Silva}
+            \begin{itemize}
+                \item The goal was to achieve a primary control loop for a AC microgrid, capable of enforcing system constraints using MPC.
+            \end{itemize}
+        \column{0.5\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.6\linewidth]{Images/ExperimentalSetupEng.pdf}
+            \end{figure}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Master's Thesis Topic (continued)}
+    \begin{columns}
+        \column{0.5\textwidth}
+            \textbf{Model-based Predictive Control for a Grid-connected Distributed Energy Resource LCL Filter}
+            \begin{itemize}
+                \item It employed the OSQP solver, which uses an ADMM optimization method.
+                \item Experimental analysis of the primary control’s performance was presented, demonstrating that MPC control successfully limits the variables of interest.
+            \end{itemize}
+        \column{0.5\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=1.1\linewidth]{Images/Variables_Exp_118.eps}
+            \end{figure}
+    \end{columns}
+\end{frame}
+
+\section{Introduction}
+\begin{frame}{Problem of Interest}
+    \begin{figure}
+        \centering
+        \resizebox{!}{4cm}{\input{Images/ACMicrogrid}}
+        \caption{An AC microgrid connected to a LV-AC grid.}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Problem of Interest (continued)}
+    \begin{figure}
+        \centering
+        \resizebox{!}{4cm}{\input{Images/DCMicrogrid}}
+        \caption{A DC microgrid.}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Problem of Interest: Integration of AC and DC Microgrids}
+    \begin{figure}
+        \centering
+        \resizebox{!}{5.3cm}{\input{Images/ACDCMicrogrid_InterlinkingConverter}}
+        \caption{Integration between AC and DC microgrids through an interlinking converter.}
+    \end{figure}
+\end{frame}
+
+\section{Technical Background and Problem Statement}
+\subsection{DT for LV Integration}
+
+\begin{frame}{Distribution Transformers for LV Integration}
+    \begin{columns}
+        \column{0.6\textwidth}
+            \begin{itemize}
+                \item Nowadays, low-voltage (LV) distribution grids are connected to medium-voltage (MV) networks through distribution transformers (DTs).
+                \item These DTs rely on tap changers, which may reduce voltage regulation performance due to their limited number of switching operations. %performance due to their limited number of switching operations.
+            \end{itemize}
+        \column{0.5\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.5\linewidth]{Images/Trafo.png}
+            \caption{Distribution transformer on an electric post.}
+            \label{fig:Trafo}
+        \end{figure}
+    \end{columns}
+    \pause
+    \begin{alertblock}{Limitations}
+        Integration of renewable energy sources is expected to increase. This may cause voltage fluctuations and power quality issues. Conventional DTs are not suitable for a future grid.
+    \end{alertblock}
+\end{frame}
+
+\subsection{SSTs}
+
+\begin{frame}{Solid-State Transformers}
+    \begin{columns}
+        \column{0.4\textwidth}
+            \begin{figure}
+                \centering
+                \resizebox{!}{1.7cm}{\input{Images/SST}}
+                \caption{Solid-state Transformer.}
+                \label{fig:HDT}
+            \end{figure}
+        \column{0.6\textwidth}
+            \begin{itemize}
+            \item To overcome the limitations of DTs, solid-state transformers (SSTs) have been proposed.
+            \begin{itemize}
+                \item These devices are based either a AC-AC converter or a AC-DC/DC-AC converter with a active rectifier for the DC stage.
+            \end{itemize}
+            \item SSTs replace the conventional DT with a fully rated power converter.
+            \begin{itemize}
+                \item This provides a regulated voltage for a connected load while it's working in full-load operation.
+            \end{itemize}
+        \end{itemize}
+    \end{columns}
+    \pause
+    \begin{alertblock}{Limitations}
+        However, this solution is complex, costly, and offers limited short-circuit capability.
+    \end{alertblock}
+\end{frame}
+
+\subsection{HDT as a Promising Solution}
+
+\begin{frame}{Hybrid Distribution Transformers}
+    \begin{columns}
+        \column{0.6\textwidth}
+            \begin{itemize}
+                \item To address the limitations of both DTs and SSTs, hybrid distribution transformers (HDTs) have emerged as a promising solution.
+                \begin{itemize}
+                    \item HDTs integrate a traditional DT with a power electronics converter.
+                    \item The most common HDT configuration features a series converter for voltage regulation and a parallel converter for current-based power quality compensation.
+                    \item The DT handles the majority of the power flow efficiently, leveraging its inherent strengths.
+                \end{itemize}
+            \end{itemize}
+        \column{0.4\textwidth}
+            \begin{figure}
+                \centering
+                \resizebox{!}{5.3cm}{\input{Images/HDT}}
+                \caption{Hybrid distribution Transformer.}
+                \label{fig:HDT}
+            \end{figure}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Drawbacks of HDTs}
+    \begin{itemize}
+        \item Coupling transformers (CTs), because of its saturation curve, cannot handle fast varying compensation voltages.
+        \item Circulating Active Power Flow (CAPF) between main DT and the power converter impoverish the efficiency.
+    \end{itemize}
+    \begin{exampleblock}{Remarks}
+        \begin{itemize}
+            \item CAPF can be eliminated by connecting a DC source to the HDT.
+            \item Using a HDT as an interlinking converter for a hybrid AC-DC microgrid is a natural method to eliminate CAPF.
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{HDTs as a Promising Solution for AC and DC Microgrids Integration}
+    \begin{figure}
+        \centering
+        \resizebox{!}{5.3cm}{\input{Images/ACDCMicrogrid_InterlinkingHDT}}
+        \caption{Integration between AC and DC microgrids through a HDT.}
+    \end{figure}
+\end{frame}
+
+\section{Research Project Methodology}
+
+\begin{frame}{Research Project Methodology}
+    \begin{itemize}
+        \item State-of-the-art research will be conducted to analyze existing work related to the topic.
+        \item New HDT models will be developed and analyzed.
+        \item A local HDT controller will be proposed to ensure robust operation. It will address DC-Link voltage regulation, series voltage compensation, and parallel converter current compensation.
+        \item An external control layer will be designed to enable the interlinking operation of the HDT, allowing efficient energy flow management between AC and DC microgrids.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Research Project Methodology (continued)}
+    \begin{itemize}
+        \item The proposed HDT will be simulated using PLECS software, including:
+        \begin{itemize}
+            \item Different scenarios, such as balanced, unbalanced, and distorted grid voltage and current operations.
+            \item Studies of transitions between grid-connected and islanded modes.
+        \end{itemize}
+        \item An optimization algorithm for a hybrid microgrid will be designed and simulated using real-time hardware-in-the-loop (RT-HiL).
+        \begin{itemize}
+            \item The proposed interlinking HDT will be integrated as an element of the microgrid.
+            \item The optimization algorithm will serve as a supervisory controller, integrating hierarchical control for the microgrid
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{Research Productivity}
+
+\subsection{Authored and Planned Submission Papers}
+
+\begin{frame}{Authored Papers}
+    \begin{itemize}
+        \item Dave Figueroa, et al.: Distributed Energy Resources with LCL Filter Control and Protection Using Model Predictive Control. \textit{Published and presented at ICA-ACCA 2024, Santiago, Chile.}
+    \end{itemize}
+    \textbf{To be authored:}
+    \begin{itemize}
+        \item Dave Figueroa, et al.: Unified MPC for Primary Control of Distributed Energy Resources with LCL Filter under Safety Constraints. \textit{Planned submission to IEEE Journal of Emerging Topics in Power Electronics (JESTPE), Q1 - 2023 Impact Factor = 4.6}\footnotemark[1].
+        \item Dave Figueroa, et al.: Validation of a Novel Reconfigurable Partial Power Converter and Optimizer for Photovoltaic Panels. \textit{Planned submission to IEEE Journal of Emerging Topics in Power Electronics (JESTPE).}
+    \end{itemize}
+    \footnotetext[1]{Taken from Journal Citation Reports - Clarivate. Results for 2023}
+\end{frame}
+
+\subsection{Co-authored and Planned Submission Papers}
+
+\begin{frame}{Co-authored Papers}
+    \begin{itemize}
+        \item Reinier Lopez, \textit{et al.}: Experimental Validation of offset-free  MPC in Voltage Source Inverters for Grid Connected and Microgrids Applications. \textit{Accepted in MDPI Applied Sciences.}
+        \item Reinier Lopez, \textit{et al.}: Linear Quadratic Tracker in Multi-agent System. \textit{Published and presented at Industrial Electronics Conference (IECON) - 2024, Chicago, USA.}
+    \end{itemize}
+    \textbf{To be authored:}
+    \begin{itemize}
+        \item Ignacio A. Acosta, \textit{et al.}: Deep Neural Network-Based Approximation of Model Predictive Control for Integrating DER Units in AC Microgrids. \textit{Planned submission to IEEE Transactions on Smart Grid (TSG), Q1 - 2023 Impact Factor = 8.6}\footnotemark[1].
+        \item Maria Coronel, \textit{et al.}: Exact Sampled-data Models for a class of Electrical Machines.
+    \end{itemize}
+    \footnotetext[1]{Taken from Journal Citation Reports - Clarivate. Results for 2023}
+\end{frame}
+
+\begin{frame}{Conferences Participation}
+    \begin{columns}
+        \column{0.5\textwidth}
+            \begin{itemize}
+                \item \textbf{ICA - ACCA 2024}, Santiago, Chile, October 20-23, 2024\\
+                Presented the paper: \textit{Distributed Energy Resources with LCL Filter Control and Protection Using Model Predictive Control}
+                \item \textbf{IECON 2024}, Chicago, Illinois, November 3-6, 2024.\\
+                Presented the paper: \textit{Linear Quadratic Tracker in Multi-agent System}
+            \end{itemize}
+        \column{0.5\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.45\linewidth]{Images/IECON.jpg}
+            \end{figure}
+    \end{columns}
+\end{frame}
+
+\begin{frame}[plain]
+    \setbeamercolor{background canvas}{bg = white}
+    \centering \Huge
+    \emph{Thanks for your attention}
+\end{frame}
+
+\maketitle
