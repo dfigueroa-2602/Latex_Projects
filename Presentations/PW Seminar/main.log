@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.4.16)  16 APR 2025 14:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.4.16)  16 APR 2025 15:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1326,7 +1326,7 @@ LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <5> not available
 <Images/Trafo.png, id=297, 1284.8pt x 856.19875pt>
 File: Images/Trafo.png Graphic file (type png)
 <use Images/Trafo.png>
-Package pdftex.def Info: Images/Trafo.png  used on input line 142.
+Package pdftex.def Info: Images/Trafo.png  used on input line 143.
 (pdftex.def)             Requested size: 99.58464pt x 66.3547pt.
 
 
@@ -1335,14 +1335,14 @@ Package pdftex.def Info: Images/Trafo.png  used on input line 142.
  <./Images/Trafo.png (PNG copy)>]
 File: Images/Trafo.png Graphic file (type png)
 <use Images/Trafo.png>
-Package pdftex.def Info: Images/Trafo.png  used on input line 142.
+Package pdftex.def Info: Images/Trafo.png  used on input line 143.
 (pdftex.def)             Requested size: 99.58464pt x 66.3547pt.
 
 
 [13
 
 ] (Images/SST.tex)
-Overfull \hbox (18.06602pt too wide) in paragraph at lines 171--171
+Overfull \hbox (18.06602pt too wide) in paragraph at lines 172--172
  [] 
  []
 
@@ -1351,7 +1351,7 @@ Overfull \hbox (18.06602pt too wide) in paragraph at lines 171--171
 [14
 
 ] (Images/SST.tex)
-Overfull \hbox (18.06602pt too wide) in paragraph at lines 171--171
+Overfull \hbox (18.06602pt too wide) in paragraph at lines 172--172
  [] 
  []
 
@@ -1360,7 +1360,7 @@ Overfull \hbox (18.06602pt too wide) in paragraph at lines 171--171
 [15
 
 ] (Images/HDT.tex)
-Overfull \vbox (8.60068pt too high) detected at line 194
+Overfull \vbox (8.60068pt too high) detected at line 195
  []
 
 
@@ -1393,9 +1393,9 @@ Overfull \vbox (8.60068pt too high) detected at line 194
 
 ]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 257.
+(Font)              <9> on input line 258.
 LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <9> not available
-(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 257.
+(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 258.
 
 
 [23
@@ -1408,7 +1408,7 @@ LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <9> not available
 <Images/IECON.jpg, id=607, 722.7pt x 1284.8pt>
 File: Images/IECON.jpg Graphic file (type jpg)
 <use Images/IECON.jpg>
-Package pdftex.def Info: Images/IECON.jpg  used on input line 289.
+Package pdftex.def Info: Images/IECON.jpg  used on input line 290.
 (pdftex.def)             Requested size: 89.62556pt x 159.32532pt.
 
 
@@ -1416,7 +1416,7 @@ Package pdftex.def Info: Images/IECON.jpg  used on input line 289.
 
  <./Images/IECON.jpg>]
 LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <24.88> not available
-(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 295.
+(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 296.
 
 
 [26
@@ -1424,7 +1424,7 @@ LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <24.88> not available
 ]
 File: Images/Logo_PW.png Graphic file (type png)
 <use Images/Logo_PW.png>
-Package pdftex.def Info: Images/Logo_PW.png  used on input line 297.
+Package pdftex.def Info: Images/Logo_PW.png  used on input line 298.
 (pdftex.def)             Requested size: 42.74034pt x 42.67912pt.
 
 
@@ -1460,7 +1460,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  133i,19n,126p,808b,1176s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss12.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss8.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss9.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsso10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsso17.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsso8.pfb>
-Output written on main.pdf (27 pages, 6582064 bytes).
+Output written on main.pdf (27 pages, 6582071 bytes).
 PDF statistics:
  713 PDF objects out of 1000 (max. 8388607)
  67 named destinations out of 1000 (max. 500000)
