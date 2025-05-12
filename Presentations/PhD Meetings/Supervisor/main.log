@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.4.16)  12 MAY 2025 13:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.4.16)  12 MAY 2025 14:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1248,15 +1248,10 @@ LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <5> not available
 [3
 
 ] (Images/HDT_Schematic.tex)
-Overfull \hbox (2.48183pt too wide) in paragraph at lines 40--40
- [] 
- []
-
-
 
 [4
 
-]
+] (Images/HDT_Control.tex)
 
 [5
 
@@ -1264,42 +1259,46 @@ Overfull \hbox (2.48183pt too wide) in paragraph at lines 40--40
 
 [6
 
+]
+
+[7
+
 ] (Images/HybridMG.tex)
-Overfull \vbox (7.09927pt too high) detected at line 64
+Overfull \vbox (7.09927pt too high) detected at line 72
  []
 
 
 
-[7
+[8
 
 ] (Images/HierarchicalMG-PC.tex)
 
-[8
+[9
 
 ] (Images/HierarchicalMG-SC.tex)
 
-[9
+[10
 
 ] (Images/HierarchicalMG-TC.tex)
 
-[10
+[11
 
 ]
 
-[11
+[12
 
 ] (Images/ACDCMicrogrid_InterlinkingHDT.tex)
 
-[12
+[13
 
 ]
 File: Images/Logo_PW.png Graphic file (type png)
 <use Images/Logo_PW.png>
-Package pdftex.def Info: Images/Logo_PW.png  used on input line 132.
+Package pdftex.def Info: Images/Logo_PW.png  used on input line 141.
 (pdftex.def)             Requested size: 42.74034pt x 42.67912pt.
 
 
-[13
+[14
 
 ])
 \tf@nav=\write7
@@ -1323,17 +1322,17 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 45784 strings out of 469959
- 1083060 string characters out of 5470318
- 1998445 words of memory out of 5000000
- 71704 multiletter control sequences out of 15000+600000
+ 45798 strings out of 469959
+ 1083447 string characters out of 5470318
+ 2002501 words of memory out of 5000000
+ 71712 multiletter control sequences out of 15000+600000
  678314 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  133i,19n,126p,821b,1128s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss12.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss8.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss9.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsso10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsso8.pfb>
-Output written on main.pdf (13 pages, 360082 bytes).
+Output written on main.pdf (14 pages, 368783 bytes).
 PDF statistics:
- 311 PDF objects out of 1000 (max. 8388607)
- 32 named destinations out of 1000 (max. 500000)
+ 321 PDF objects out of 1000 (max. 8388607)
+ 35 named destinations out of 1000 (max. 500000)
  464 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -620,6 +620,9 @@ INPUT Images\HDT.tex
 INPUT .\Images\HDT_Schematic.tex
 INPUT .\Images\HDT_Schematic.tex
 INPUT Images\HDT_Schematic.tex
+INPUT .\Images\HDT_Control.tex
+INPUT .\Images\HDT_Control.tex
+INPUT Images\HDT_Control.tex
 INPUT .\Images\HybridMG.tex
 INPUT .\Images\HybridMG.tex
 INPUT Images\HybridMG.tex

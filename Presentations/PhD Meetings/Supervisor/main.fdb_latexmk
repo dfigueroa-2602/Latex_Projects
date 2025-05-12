@@ -1,11 +1,11 @@
 # Fdb version 4
-["biber main"] 1747041986.5868 "main.bcf" "main.bbl" "main" 1747049595.81916 0
-  "main.bcf" 1747049595 107316 6ab01a2b840bb6387288e3116805ce5d "pdflatex"
+["biber main"] 1747051077.66957 "main.bcf" "main.bbl" "main" 1747053393.64532 0
+  "main.bcf" 1747053393 107316 6ab01a2b840bb6387288e3116805ce5d "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1747049593.30066 "c:/Users/Dave/Documents/git/Latex_Projects/Presentations/PhD Meetings/Supervisor/main.tex" "main.pdf" "main" 1747049595.81957 0
+["pdflatex"] 1747053391.02261 "c:/Users/Dave/Documents/git/Latex_Projects/Presentations/PhD Meetings/Supervisor/main.tex" "main.pdf" "main" 1747053393.64572 0
   "C:/Users/Dave/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1744804135 81088 29d6fa367ac022d1b69251d68c0742e6 ""
   "C:/Users/Dave/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1744804095 13147729 e852e848acfad9093d39a3e411e9df18 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc" 1256929440 2327 9d6df24f9c4f7368395224341a95523a ""
@@ -312,20 +312,21 @@
   "FirstSlide.tex" 1747049592 244 93f2fee3e5155b6417eb5cbec495003c ""
   "Images/ACDCMicrogrid_InterlinkingHDT.tex" 1747041819 17925 32d4284a7b07126d574534efecb22f5e ""
   "Images/HDT.tex" 1747041819 9401 2306c5d128e819ac5fba6feefc2d74a1 ""
-  "Images/HDT_Schematic.tex" 1747048522 55408 5f04e2c8d2bfca13162a8dbc10e109c1 ""
+  "Images/HDT_Control.tex" 1747053297 29301 51982517291d4e2ca82ae5447d6288f0 ""
+  "Images/HDT_Schematic.tex" 1747051074 56753 3ec378cc9bb5d898cff7dc04806dca7d ""
   "Images/HierarchicalMG-PC.tex" 1747041819 5062 d3cf7a265728e92952ef5baa8004be26 ""
   "Images/HierarchicalMG-SC.tex" 1747041819 5061 00df8a2b95696ddb42c908d3bdb9673e ""
   "Images/HierarchicalMG-TC.tex" 1747041819 5061 7dbe6f18565043df125140555f0b61a9 ""
   "Images/HybridMG.tex" 1747049523 25088 bef8043fb43f97b0704ef9d8aefb2365 ""
   "Images/Logo_PW.png" 1747041819 133906 9225d594eb57703703ad17a23ecf1a84 ""
   "Packages.tex" 1747041819 324 33a3b9ea7e1c7e25ba036824dc9773cd ""
-  "Presentation.tex" 1747049546 5703 4b36ecbcaaf554d0028e664e45d4cdcb ""
+  "Presentation.tex" 1747053388 5954 eb2436a27baefbef48d894f2e5ddd49d ""
   "c:/Users/Dave/Documents/git/Latex_Projects/Presentations/PhD Meetings/Supervisor/main.tex" 1747041819 191 320477285a6f3279fdb6afd8cebf7e76 ""
-  "main.aux" 1747049595 2706 b11262867287638ee698b2408f728c4d "pdflatex"
-  "main.bbl" 1747041987 486 76d65a242ec496c9b4361af646ff12cb "biber main"
-  "main.nav" 1747049595 1372 43456e0ce533c003c5b2abce1fd23a79 "pdflatex"
-  "main.out" 1747049595 194 8f42f520eb4e1d884e8bf68a4572848b "pdflatex"
-  "main.run.xml" 1747049595 2395 395fc36eaa6d19cafd68c61df92ebbe4 "pdflatex"
+  "main.aux" 1747053393 2994 9ce6deb64118fe75029009d114e03ad2 "pdflatex"
+  "main.bbl" 1747051080 486 76d65a242ec496c9b4361af646ff12cb "biber main"
+  "main.nav" 1747053393 1488 3ea7cda8b14b8d15cc9ed633b9bfa96a "pdflatex"
+  "main.out" 1747053393 194 8f42f520eb4e1d884e8bf68a4572848b "pdflatex"
+  "main.run.xml" 1747053393 2395 395fc36eaa6d19cafd68c61df92ebbe4 "pdflatex"
   "main.tex" 1747041819 191 320477285a6f3279fdb6afd8cebf7e76 ""
   (generated)
   "main.aux"
