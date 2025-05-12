@@ -1,0 +1,110 @@
+\subsection{HDT as a Promising Solution}
+
+\begin{frame}{What is studied?}
+    \begin{columns}
+        \column{0.6\textwidth}
+            \begin{itemize}
+                \only<1-2>{
+                \item A Hybrid distribution transformer (HDT) can be used to improve the power quality of a distribution network and to extend the lifespan of the distribution transformer (DT).
+                \item The way to make control to the HDT is separated.
+                \begin{itemize}
+                    \item One LQR control for the series converter.
+                    \item One multi-resonant state-feedback control for the parallel converter.
+                \end{itemize}
+                }
+                \only<2>{
+                \begin{exampleblock}{Observations}
+                    \begin{itemize}
+                        \item This can be unified in only one controller (which could be called "Internal Control Loop").
+                    \end{itemize}
+                \end{exampleblock}
+                }
+                \only<3-4>{
+                \item The HDT issue of circulating active power flow (CAPF) can be eliminated if a DC microgrid (DC-MG) is connected to the DC-Link of both voltage and current converters.
+                \item This enables the HDT to act as an interlinking converter (IC) between these two MGs.
+                }
+                \only<4>{
+                \begin{exampleblock}{Observations}
+                    \begin{itemize}
+                        \item This allows the IC to be controlled by a hierarchical control for MGs (which will have the internal control nested to it).
+                    \end{itemize}
+                \end{exampleblock}
+                }
+            \end{itemize}
+        \column{0.4\textwidth}
+            \begin{figure}
+                \centering
+                \resizebox{!}{5.3cm}{\input{Images/HDT}}
+                \caption{Hybrid distribution Transformer.}
+                \label{fig:HDT}
+            \end{figure}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Hierarchical Control of Microgrids}
+    \begin{columns}
+        \column{0.5\textwidth}
+            \only<1>{
+                \begin{block}{Primary Control}
+                    \begin{itemize}
+                        \item Stabilize the amplitude voltage and frequency of the microgrid.
+                        \item Provide capacity for the distributed energy resource (DER) to connect and disconnect from the grid.
+                        \item Protect the converter.
+                    \end{itemize}
+                \end{block}
+            }
+            \only<2>{
+                \begin{block}{Secondary Control}
+                    \begin{itemize}
+                        \item Gives the nominal operating point for the primary control.
+                        \item Provides the ability for the DER to contribute active power to the main grid. 
+                    \end{itemize}
+                \end{block}
+            }
+            \only<3>{
+                \begin{block}{Tertiary Control}
+                    \begin{itemize}
+                        \item Coordinates power dispatch to the main grid.
+                    \end{itemize}
+                \end{block}
+            }
+        \column{0.5\textwidth}
+            \begin{figure}
+                \centering
+                \resizebox{!}{4.5cm}{
+                \only<1>{\input{Images/HierarchicalMG-PC}}
+                \only<2>{\input{Images/HierarchicalMG-SC}}
+                \only<3>{\input{Images/HierarchicalMG-TC}}
+                }
+                \caption{Microgrid hierarchical control.}
+                \label{fig:MGHierarchy}
+        \end{figure}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Other Ways to Make Control of the Internal Loop of IC}
+    \begin{itemize}
+        \item Model predictive control (MPC)
+        \begin{itemize}
+            \item It is a control strategy that uses a model of the system to predict its future behavior and optimize the control inputs accordingly.
+            \item One of the key advantages of MPC is its ability to impose restrictions on either the states and/or the control inputs.
+            \item This makes it useful if the objective is to protect the IC.
+        \end{itemize}
+        \item Reinforcement learning (RL)
+        \begin{itemize}
+            \item It is a type of machine learning that focuses on how agents should take actions in an environment to maximize a cumulative reward.
+            \item RL has been successfully applied to various control problems, including power systems.
+            \item The main advantage of RL is its ability to learn from experience and adapt to changing conditions.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{HDTs as a Promising Solution for AC and DC Microgrids Integration}
+    \begin{figure}
+        \centering
+        \resizebox{!}{5.3cm}{\input{Images/ACDCMicrogrid_InterlinkingHDT}}
+        \caption{Integration between AC and DC microgrids through a HDT.}
+    \end{figure}
+\end{frame}
+
+\maketitle
