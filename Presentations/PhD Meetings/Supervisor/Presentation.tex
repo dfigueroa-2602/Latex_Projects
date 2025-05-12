@@ -19,19 +19,8 @@
                     \end{itemize}
                 \end{exampleblock}
                 }
-                \only<3-4>{
-                \item The HDT issue of circulating active power flow (CAPF) can be eliminated if a DC microgrid (DC-MG) is connected to the DC-Link of both voltage and current converters.
-                \item This enables the HDT to act as an interlinking converter (IC) between these two MGs.
-                }
-                \only<4>{
-                \begin{exampleblock}{Observations}
-                    \begin{itemize}
-                        \item This allows the IC to be controlled by a hierarchical control for MGs (which will have the internal control nested to it).
-                    \end{itemize}
-                \end{exampleblock}
-                }
             \end{itemize}
-        \column{0.4\textwidth}
+            \column{0.4\textwidth}
             \begin{figure}
                 \centering
                 \resizebox{!}{5.3cm}{\input{Images/HDT}}
@@ -39,6 +28,39 @@
                 \label{fig:HDT}
             \end{figure}
     \end{columns}
+\end{frame}
+
+\begin{frame}{Hybrid Distribution Transformer}
+    \begin{figure}
+        \centering
+        \resizebox{!}{5.3cm}{\input{Images/HDT_Schematic.tex}}
+        \caption{HDT Schematic.}
+        \label{fig:HDT_Schematic}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{HDT as an Interlinking Converter}
+        \begin{itemize}
+            \item<1-2> The HDT issue of circulating active power flow (CAPF) can be eliminated if a DC microgrid (DC-MG) is connected to the DC-Link of both voltage and current converters.
+            \item<1-2> This enables the HDT to act as an interlinking converter (IC) between these two MGs.
+        \end{itemize}
+        \only<2>{
+        \begin{exampleblock}{Observations}
+            \begin{itemize}
+                \item This allows the IC to be controlled by a hierarchical control for MGs (which will have the internal control nested to it).
+            \end{itemize}
+        \end{exampleblock}
+        }
+\end{frame}
+
+\begin{frame}{HDT as an Interlinking Converter}
+    \begin{figure}
+        \centering
+        \resizebox{!}{6.3cm}{\input{Images/HybridMG.tex}}
+        \caption{Hybrid microgrid with the HDT as an interlinking converter.}
+        \label{fig:HybridMG}
+    \end{figure}
+    
 \end{frame}
 
 \begin{frame}{Hierarchical Control of Microgrids}
