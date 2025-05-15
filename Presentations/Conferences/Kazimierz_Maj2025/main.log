@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.5.13)  14 MAY 2025 11:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.5.13)  14 MAY 2025 11:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1201,7 +1201,11 @@ Package pdftex.def Info: Images/Logo_PW.png  used on input line 11.
 
 [1
 
-{C:/Users/Dave/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc} <./Images/Logo_PW.png>] (Presentation.tex)
+{C:/Users/Dave/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc} <./Images/Logo_PW.png>] (Presentation.tex
+
+[2
+
+])
 \tf@nav=\write7
 \openout7 = `main.nav'.
 
@@ -1223,17 +1227,17 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 45269 strings out of 469941
- 1068824 string characters out of 5469914
+ 45300 strings out of 469941
+ 1069653 string characters out of 5469914
  1971362 words of memory out of 5000000
- 71295 multiletter control sequences out of 15000+600000
+ 71324 multiletter control sequences out of 15000+600000
  641042 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  133i,15n,126p,829b,807s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss12.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss8.pfb>
-Output written on main.pdf (1 page, 189450 bytes).
+Output written on main.pdf (2 pages, 191609 bytes).
 PDF statistics:
- 85 PDF objects out of 1000 (max. 8388607)
- 3 named destinations out of 1000 (max. 500000)
- 198 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 94 PDF objects out of 1000 (max. 8388607)
+ 5 named destinations out of 1000 (max. 500000)
+ 204 words of extra memory for PDF output out of 10000 (max. 10000000)
 

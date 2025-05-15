@@ -1,11 +1,11 @@
 # Fdb version 4
-["biber main"] 1747214900.16464 "main.bcf" "main.bbl" "main" 1747215144.53069 0
-  "main.bcf" 1747215144 107316 6ab01a2b840bb6387288e3116805ce5d "pdflatex"
+["biber main"] 1747215224.13992 "main.bcf" "main.bbl" "main" 1747215233.04188 0
+  "main.bcf" 1747215232 107316 6ab01a2b840bb6387288e3116805ce5d "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1747215142.90663 "c:/Users/Dave/Documents/git/Latex_Projects/Presentations/Conferences/Kazimierz_Maj2025/main.tex" "main.pdf" "main" 1747215144.53114 0
+["pdflatex"] 1747215231.40707 "c:/Users/Dave/Documents/git/Latex_Projects/Presentations/Conferences/Kazimierz_Maj2025/main.tex" "main.pdf" "main" 1747215233.04231 0
   "C:/Users/Dave/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1747149596 81088 29d6fa367ac022d1b69251d68c0742e6 ""
   "C:/Users/Dave/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1747149064 13157157 dc7e5788aae9820ed782ce41242cd78f ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc" 1256929440 2327 9d6df24f9c4f7368395224341a95523a ""
@@ -284,13 +284,13 @@
   "FirstPage.tex" 1747215038 241 1c49bdafc7ac9747f62341ea6a76f562 ""
   "Images/Logo_PW.png" 1747041819 133906 9225d594eb57703703ad17a23ecf1a84 ""
   "Packages.tex" 1747215123 432 87e0b8bbfa8ba6e8f39f654587b7256f ""
-  "Presentation.tex" 1747214932 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "Presentation.tex" 1747215231 45 3ef1110da5f51a1eb85ae009a23584e1 ""
   "c:/Users/Dave/Documents/git/Latex_Projects/Presentations/Conferences/Kazimierz_Maj2025/main.tex" 1747215142 207 ea6cd3647ee9db024281d77ebeea22ef ""
-  "main.aux" 1747215144 712 914b5d7e94b5b25d871674ed511186fc "pdflatex"
-  "main.bbl" 1747214901 486 76d65a242ec496c9b4361af646ff12cb "biber main"
-  "main.nav" 1747215144 307 9e520c26371a1250ff9fc1fe87f9c655 "pdflatex"
-  "main.out" 1747215144 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.run.xml" 1747215144 2395 395fc36eaa6d19cafd68c61df92ebbe4 "pdflatex"
+  "main.aux" 1747215232 836 0e99e2125f0ea49855c0864cebff755c "pdflatex"
+  "main.bbl" 1747215225 486 76d65a242ec496c9b4361af646ff12cb "biber main"
+  "main.nav" 1747215232 395 640a03f4d3f0f705896c1d8375ddfa75 "pdflatex"
+  "main.out" 1747215232 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.run.xml" 1747215232 2395 395fc36eaa6d19cafd68c61df92ebbe4 "pdflatex"
   "main.tex" 1747215142 207 ea6cd3647ee9db024281d77ebeea22ef ""
   (generated)
   "main.aux"
