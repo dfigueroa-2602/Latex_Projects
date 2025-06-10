@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.5.13)  10 JUN 2025 18:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.7)  10 JUN 2025 22:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -6,7 +6,7 @@ entering extended mode
 **"c:/Users/Dave/Documents/git/Latex_Projects/Documents/AI in Statistics/main.tex"
 (c:/Users/Dave/Documents/git/Latex_Projects/Documents/AI in Statistics/main.tex
 LaTeX2e <2024-11-01> patch level 2
-L3 programming layer <2025-04-14>
+L3 programming layer <2025-04-29>
 (Packages.tex (C:\Users\Dave\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
 Document Class: article 2024/06/29 v1.4n Standard LaTeX document class
 (C:\Users\Dave\AppData\Local\Programs\MiKTeX\tex/latex/base\size12.clo
@@ -197,7 +197,7 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
 ) (C:\Users\Dave\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
-Package: hyperref 2024-11-05 v7.01l Hypertext links for LaTeX
+Package: hyperref 2025-05-20 v7.01m Hypertext links for LaTeX
  (C:\Users\Dave\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 ) (C:\Users\Dave\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.sty
@@ -230,7 +230,7 @@ Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 \Hy@linkcounter=\count297
 \Hy@pagecounter=\count298
  (C:\Users\Dave\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
-File: pd1enc.def 2024-11-05 v7.01l Hyperref: PDFDocEncoding definition (HO)
+File: pd1enc.def 2025-05-20 v7.01m Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 ) (C:\Users\Dave\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
@@ -238,7 +238,7 @@ Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
 \Hy@SavedSpaceFactor=\count299
  (C:\Users\Dave\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
-File: puenc.def 2024-11-05 v7.01l Hyperref: PDF Unicode definition (HO)
+File: puenc.def 2025-05-20 v7.01m Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
@@ -281,16 +281,15 @@ package with kernel methods
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
  (C:\Users\Dave\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
-File: hpdftex.def 2024-11-05 v7.01l Hyperref driver for pdfTeX
- (C:\Users\Dave\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.sty
-Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
-with kernel methods
-)
+File: hpdftex.def 2025-05-20 v7.01m Hyperref driver for pdfTeX
 \Fld@listcount=\count305
 \c@bookmark@seq@number=\count306
  (C:\Users\Dave\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
 Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
- (C:\Users\Dave\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
+ (C:\Users\Dave\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
+with kernel methods
+) (C:\Users\Dave\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
@@ -429,7 +428,7 @@ LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 1
  (C:\Users\Dave\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
-<Images/Motor.pdf, id=57, 198.7425pt x 73.27374pt>
+<Images/Motor.pdf, id=89, 198.7425pt x 73.27374pt>
 File: Images/Motor.pdf Graphic file (type pdf)
 <use Images/Motor.pdf>
 Package pdftex.def Info: Images/Motor.pdf  used on input line 28.
@@ -453,43 +452,65 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 {C:/Users/Dave/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <./Images/Motor.pdf>]
 
 [2]
-<Images/MotorDynamics.pdf, id=101, 367.3725pt x 92.345pt>
+<Images/MotorDynamics.pdf, id=133, 367.3725pt x 92.345pt>
 File: Images/MotorDynamics.pdf Graphic file (type pdf)
 <use Images/MotorDynamics.pdf>
 Package pdftex.def Info: Images/MotorDynamics.pdf  used on input line 99.
 (pdftex.def)             Requested size: 483.69687pt x 121.5928pt.
-<Images/MotorDynamics_Torque.pdf, id=104, 367.3725pt x 86.3225pt>
+<Images/MotorDynamics_Torque.pdf, id=136, 367.3725pt x 86.3225pt>
 File: Images/MotorDynamics_Torque.pdf Graphic file (type pdf)
 <use Images/MotorDynamics_Torque.pdf>
 Package pdftex.def Info: Images/MotorDynamics_Torque.pdf  used on input line 107.
 (pdftex.def)             Requested size: 483.69687pt x 113.66283pt.
-
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 117.
+ (C:\Users\Dave\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
 
 [3 <./Images/MotorDynamics.pdf> <./Images/MotorDynamics_Torque.pdf
 
 pdfTeX warning: pdflatex (file ./Images/MotorDynamics_Torque.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->] (main.bbl))
+>]
+LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 119.
+ (C:\Users\Dave\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ppl.fd
+File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
+)
 
-[4] (main.aux)
+[4{C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}]
+Overfull \hbox (18.16104pt too wide) in paragraph at lines 183--184
+[]\T1/ppl/b/n/12 Learning el-e-ment: \T1/ppl/m/n/12 the pol-icy and value func-tion are up-dated through temporal-difference
+ []
+
+
+
+[5]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+
+[6] (main.bbl))
+
+[7] (main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
-L3 programming layer <2025-04-14>
+L3 programming layer <2025-04-29>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: B633475308814258C210866F4A1D6709;1973.
+(rerunfilecheck)             Checksum: 06DBB9648D2A649FC0427B7C08F61B0C;3462.
  ) 
 Here is how much of TeX's memory you used:
- 12825 strings out of 469941
- 209134 string characters out of 5469914
- 628085 words of memory out of 5000000
- 39422 multiletter control sequences out of 15000+600000
- 657898 words of font info for 109 fonts, out of 8000000 for 9000
+ 12942 strings out of 469923
+ 210944 string characters out of 5469655
+ 628244 words of memory out of 5000000
+ 39524 multiletter control sequences out of 15000+600000
+ 665334 words of font info for 126 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 74i,9n,82p,519b,456s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmri.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (4 pages, 141369 bytes).
+ 74i,10n,82p,498b,512s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmri.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on main.pdf (7 pages, 188937 bytes).
 PDF statistics:
- 156 PDF objects out of 1000 (max. 8388607)
- 36 named destinations out of 1000 (max. 500000)
- 120 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 218 PDF objects out of 1000 (max. 8388607)
+ 48 named destinations out of 1000 (max. 500000)
+ 184 words of extra memory for PDF output out of 10000 (max. 10000000)
 
