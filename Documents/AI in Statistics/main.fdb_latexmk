@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1749587030.46565 "main.aux" "main.bbl" "main" 1749587032.73511 0
+["bibtex main"] 1749587030.46565 "main.aux" "main.bbl" "main" 1749587224.85705 0
   "./bib.bib" 1749579779 200 9394156c80b879d78c582238ac2b1934 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/bibtex/bst/bibtex/ieeetr.bst" 1291864344 18361 1a00e58565e7f19bf2b3e1bfb82254ae ""
-  "main.aux" 1749587031 5001 a8691d0601ba35126789425fe711dbd8 "pdflatex"
+  "main.aux" 1749587223 5001 a8691d0601ba35126789425fe711dbd8 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1749587030.81569 "c:/Users/Dave/Documents/git/Latex_Projects/Documents/AI in Statistics/main.tex" "main.pdf" "main" 1749587032.73572 0
+["pdflatex"] 1749587221.94372 "c:/Users/Dave/Documents/git/Latex_Projects/Documents/AI in Statistics/main.tex" "main.pdf" "main" 1749587224.85773 0
   "C:/Users/Dave/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1749329478 123198 3bbd8409905bfb5918bb33e6a0462096 ""
   "C:/Users/Dave/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1749329473 13158840 f9a3bf93b6392339276d48e92d7763bc ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -128,13 +128,13 @@
   "Images/Motor.pdf" 1749579779 8780 b2aa5e48a48cf48f736c083df23329b3 ""
   "Images/MotorDynamics.pdf" 1749579779 16949 fbee104de97ca4f0e1c0000cf35137ae ""
   "Images/MotorDynamics_Torque.pdf" 1749579779 17327 5b485b263ea11e204bc59d7075bdb606 ""
-  "Images/RandomInitSpeedEta.eps" 1749586649 41129 fec76d16663584241b8a4ce58f7d10f6 ""
+  "Images/RandomInitSpeedEta.eps" 1749587216 41132 dbd21f302100c328d8cc31807b91e04e ""
   "Packages.tex" 1749579779 373 99c48c814574030a2305263ef6c210bd ""
   "Report.tex" 1749587027 14364 0400b7531459e71266770cddb9cca588 ""
   "c:/Users/Dave/Documents/git/Latex_Projects/Documents/AI in Statistics/main.tex" 1749579779 130 fec267c5c8b043a281484b842e6fa223 ""
-  "main.aux" 1749587031 5001 a8691d0601ba35126789425fe711dbd8 "pdflatex"
+  "main.aux" 1749587223 5001 a8691d0601ba35126789425fe711dbd8 "pdflatex"
   "main.bbl" 1749587030 199 82f30059bd64be929d83c9901d00fbd8 "bibtex main"
-  "main.out" 1749587031 3462 06dbb9648d2a649fc0427b7c08f61b0c "pdflatex"
+  "main.out" 1749587223 3462 06dbb9648d2a649fc0427b7c08f61b0c "pdflatex"
   "main.tex" 1749579779 130 fec267c5c8b043a281484b842e6fa223 ""
   (generated)
   "main.aux"

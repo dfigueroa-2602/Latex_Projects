@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.7)  10 JUN 2025 22:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.7)  10 JUN 2025 22:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -476,14 +476,16 @@ LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 11
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
 Package epstopdf Info: Source file: <Images/RandomInitSpeedEta.eps>
-(epstopdf)                    date: 2025-06-10 22:17:29
-(epstopdf)                    size: 41129 bytes
+(epstopdf)                    date: 2025-06-10 22:26:56
+(epstopdf)                    size: 41132 bytes
 (epstopdf)             Output file: <Images/RandomInitSpeedEta-eps-converted-to.pdf>
-(epstopdf)                    date: 2025-06-10 22:23:47
-(epstopdf)                    size: 22570 bytes
 (epstopdf)             Command: <miktex-epstopdf --outfile=Images/RandomInitSpeedEta-eps-converted-to.pdf Images/RandomInitSpeedEta.eps>
 (epstopdf)             \includegraphics on input line 125.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(miktex-epstopdf --outfile=Images/RandomInitSpeedEta-eps-converted-to.pdf Images/RandomInitSpeedEta.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <Images/RandomInitSpeedEta-eps-converted-to.pdf>
+(epstopdf)                    date: 2025-06-10 22:27:03
+(epstopdf)                    size: 22571 bytes.
 <Images/RandomInitSpeedEta-eps-converted-to.pdf, id=148, 643.40375pt x 403.5075pt>
 File: Images/RandomInitSpeedEta-eps-converted-to.pdf Graphic file (type pdf)
 <use Images/RandomInitSpeedEta-eps-converted-to.pdf>
@@ -519,7 +521,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  74i,10n,82p,466b,508s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmri.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (7 pages, 210600 bytes).
+Output written on main.pdf (7 pages, 210598 bytes).
 PDF statistics:
  234 PDF objects out of 1000 (max. 8388607)
  49 named destinations out of 1000 (max. 500000)
