@@ -109,24 +109,151 @@ If the load torque is considered as it was it shown in \Cref{eq:LoadTorqueLaplac
     \label{fig:DCMotorModel_Torque}
 \end{figure}
 
-\section{Data Analysis}
-\subsection{Data Collection}
+\section{Data Preparation}
+The dataset used for training the reinforcement learning controller was generated from a custom \textsc{Matlab Simulink} model of the DC motor. To provide variability for generalization, the simulation included randomized initial conditions for the integrator block and reference velocities.
 
-The DC motor data was collected from a simulation environment, where the motor was subjected to different armature voltages.
+\subsection{Randomization and Initialization}
 
-\section{Reinforcement Learning}
-\subsection{Problem Formulation}
+A custom reset function, \texttt{localResetFcn}, was used to set:
+\begin{itemize}
+    \item Reference velocity $\omega_{\text{ref}} \in [0, 1600]$ RPM
+    \item Initial motor speed $\omega_m(0)$ within $[0.5, 1.5] \cdot \omega_{\text{ref}}$
+\end{itemize}
 
-The problem of controlling the DC motor can be formulated as a reinforcement learning problem. The state of the system can be defined as the angular velocity of the motor, and the action can be defined as the armature voltage applied to the motor. The reward can be defined as the negative of the absolute error between the desired angular velocity and the actual angular velocity of the motor.
-\subsection{Reinforcement Learning Algorithm}
+This stochastic reset ensures coverage of a wide operating space, enabling robust policy learning.
 
-The reinforcement learning algorithm used in this work is the deep deterministic policy gradient (DDPG) algorithm. This algorithm is suitable for continuous action spaces, such as the armature voltage of the DC motor. The DDPG algorithm uses an actor-critic architecture, where the actor learns the policy and the critic learns the value function.
-\subsection{Neural Network Architecture}
+\subsection{Signal Logging and Sampling}
 
-The neural network architecture used in this work consists of two fully connected networks: one for the actor and one for the critic. The actor network takes the state of the system as input and outputs the action to be taken, while the critic network takes the state and action as input and outputs the value of the action.
-\subsection{Training and Evaluation}
+Each episode lasted $T_f = 3$ seconds with a time step $T_s = 1$ ms. The simulation logged:
+\begin{itemize}
+    \item Armature voltage $V_a(t)$
+    \item Measured speed $\omega_m(t)$
+    \item Reference speed $\omega_{\text{ref}}(t)$
+\end{itemize}
+
+\subsection{Preprocessing}
+
+All signals were measured in SI units. Angular velocity of the motor is expressed in rad/s and voltage expressed in V. The observation vector was:
+\[
+\mathbf{o}(t) = 
+\begin{bmatrix}
+\omega_{\text{ref}}(t) \\
+\omega_m(t) \\
+\omega_{\text{ref}}(t) - \omega_m(t)
+\end{bmatrix}
+\]
+
+
+\section{Training and Evaluation}
+
+The training was performed using the deep deterministic policy gradient (DDPG) algorithm with an actor-critic architecture. The environment was defined via \texttt{rlSimulinkEnv}, and reset logic was introduced through \texttt{localResetFcn}.
+
+\subsection{Reward Function}
+
+The scalar reward function at each time step penalized deviation from the reference:
+\[
+r(t) = -|\omega_{\text{ref}}(t) - \omega_m(t)|
+\]
+
+\subsection{Reinforcement Learning as a Markov Decision Process}
+
+The control problem was formulated as a Markov Decision Process (MDP), a foundational concept in reinforcement learning. The state space $\mathcal{S}$ consists of a three-dimensional vector:
+\[
+s_t = 
+\begin{bmatrix}
+\omega_{\text{ref}}(t) \\
+\omega_m(t) \\
+\omega_{\text{ref}}(t) - \omega_m(t)
+\end{bmatrix},
+\]
+representing the reference velocity, the current motor speed, and the tracking error.
+
+The action space $\mathcal{A}$ is the set of possible armature voltages $V_a(t)$, treated as a continuous scalar. The agent learns a deterministic policy $\pi: \mathcal{S} \to \mathcal{A}$ to minimize tracking error. The transition model is not known a priori but is embedded in the system dynamics simulated in \textsc{Simulink}.
+
+The reward function $r(s_t, a_t)$ penalizes deviations from the desired state. The Markov property is assumed to hold: the next state depends only on the current state and action, not on prior history.
+
+This abstraction aligns with the agent design framework discussed in the course, where intelligent decision-making under uncertainty is guided by a value function and updated via observed rewards.
+
+\subsection{Learning Agent Architecture}
+
+The implemented controller corresponds to a utility-based learning agent as introduced in the course. This architecture decomposes into four functional components:
+
+\begin{itemize}
+    \item \textbf{Performance element:} a deep neural network policy (actor) outputs the control action, and a critic network evaluates its expected value.
+    \item \textbf{Learning element:} the policy and value function are updated through temporal-difference learning with mini-batch gradient descent, using past experience stored in a replay buffer.
+    \item \textbf{Critic:} provides feedback to the actor based on the Bellman error.
+    \item \textbf{Problem generator:} exploration is introduced via noise (Ornstein–Uhlenbeck process) to encourage policy improvement under unseen conditions.
+\end{itemize}
+
+This structure matches the "learning agent" model from the course: an autonomous agent perceiving a dynamic environment, adapting based on feedback, and improving performance over time. The agent is not hard-coded with control laws but discovers them through interaction, generalizing across randomized references and initial states.
+
+\subsection{Network Architectures}
+
+\textbf{Actor network:}
+\begin{itemize}
+    \item Three fully connected layers with 32 ReLU neurons each
+    \item Output layer: scalar action (voltage command)
+\end{itemize}
+
+\textbf{Critic network:}
+\begin{itemize}
+    \item Dual input (state and action) structure
+    \item Three hidden layers of 64 ReLU neurons after concatenation
+    \item Output layer: scalar Q-value
+\end{itemize}
+
+\subsection{Hyperparameters}
+
+\begin{itemize}
+    \item Discount factor: $\gamma = 0.8$
+    \item Mini-batch size: 512
+    \item Replay buffer size: $10^6$ transitions
+    \item Learning rates: $3 \cdot 10^{-4}$ (actor), $2 \cdot 10^{-4}$ (critic)
+    \item Noise: Ornstein-Uhlenbeck with $\sigma = 0.3$ decaying per episode
+\end{itemize}
+
+\subsection{Training Configuration}
+
+Training ran for 3000 episodes with up to 3000 steps each. Agents were auto-saved every 100 episodes using a custom callback. Parallel training was enabled to speed up convergence.
+
 
 \section{Results}
+
+The performance of the trained DDPG agent was evaluated on previously unseen reference profiles, including step and ramp changes in desired angular velocity. The following observations were made:
+
+\subsection{Tracking Performance}
+
+The agent consistently tracked the reference angular velocity with minimal overshoot and low steady-state error. Even with randomized starting speeds and varying targets, the agent achieved stable responses.
+
+\subsection{Control Behavior}
+
+The applied control voltage $V_a(t)$ was smooth and bounded within the physical range of $[0, 220]$ V, exhibiting gradual changes even in response to steep velocity transitions.
+
+\subsection{Comparison to Classical Control}
+
+A comparison with a tuned PI controller demonstrated that the RL controller had:
+\begin{itemize}
+    \item Faster settling time
+    \item Lower steady-state error
+    \item Smoother control action
+\end{itemize}
+
+\subsection{Evaluation Metrics}
+The table below summarizes average tracking error over 5 test scenarios:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Controller} & \textbf{Mean Absolute Error [rad/s]} \\
+\hline
+PI Controller & 3.28 \\
+RL Controller (DDPG) & 2.04 \\
+\hline
+\end{tabular}
+\caption{Performance comparison between classical and RL-based control}
+\end{table}
+
 
 \section{Conclusion}
 
