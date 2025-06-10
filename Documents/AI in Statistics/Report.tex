@@ -1,8 +1,139 @@
 %!TEX root = main.tex
+
+% Final report jointly to the code of the AI/ML tool and the database used by the student (in the case of ML tool ). The final report should present the whole data workflow of your project, therefore you should explain all phases of your work, such as:
+% – Presentation of the problem;
+% - Analysis of the problem;
+% - Data analysis: what data do you need for your objective, is the data from chosen dataset useful, etc.;
+% – Data preparation: importing data, cleaning data, etc.;
+% – AI (or concretely, ML) algorithm working on data, transformation of data and features extraction, etc.;
+% - Evaluation of the algorithm: is it working properly?, etc.
+% Please, do not forget about proper data visualization to explain and justify your decisions and show your findings.
+
+
 \title{\textbf{Machine Learning Applied to a DC Motor}}
 \author{Dave Figueroa}
 \date{June 2025}
 \maketitle
 
 \section{Introduction}
-This report presents the application of machine learning techniques to model and control a DC motor. The objective is to demonstrate how data-driven approaches can be utilized to predict the motor's behavior and optimize its performance.
+
+In power electronics, the usage of DC motors is prevalent due to their simplicity and efficiency~\cite{BookUmans2013}. These motor can be found in various applications, from small toys to large industrial machines. The control of these motors is crucial for their performance and efficiency.
+
+Generally, the DC motors are attached to a load, which can be anything from a simple fan to a complex robotic arm. The load characteristics can significantly affect the performance of the motor, and thus, it is essential to model the motor and its load accurately. An example of a DC motor and its load is shown in the \Cref{fig:DCMotor}.
+
+In this report, we will explore the application of machine learning techniques to model and control a DC motor.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width = 0.8\textwidth]{Images/Motor.pdf}
+    \caption{DC Motor and its load}
+    \label{fig:DCMotor}
+\end{figure}
+
+
+\section{DC Motor Model}
+
+\subsection{Mathematical Model}
+
+A DC motor can be modeled in terms of its electrical and mechanical components. The electrical part consists of the armature circuit, which includes the armature inductance, resistance, and back electromotive force (EMF). The equations governing the electrical dynamics of the motor are given by:
+\begin{equation}
+    V_a(t) = L_A \dfrac{di_a(t)}{dt} + R_A i_a(t) + V_{\text{rot}}(t)
+\end{equation}
+where $L_A$ is the armature inductance, $R_A$ is the armature resistance, $V_a(t)$ is the armature voltage of the motor and $i_f(t)$ is the field current. For simplicity, in this work the field current will be considered constant ($i_f(t) = I_F$). $V_{\text{rot}}(t)$ is the back EMF given by:
+\begin{equation}
+    V_{\text{rot}}(t) = G_{fq}i_f(t) \omega_m(t)
+\end{equation}
+In this equation, $G_{fq}$ is the field-to-rotor flux linkage constant and $\omega_m(t)$ is the angular velocity of the motor.
+The mechanical part of the motor is described by the torque equation:
+\begin{align}
+    T(t) &= T_e(t) - T_L(t)
+    \intertext{where $T_e(t)$ is the electrical torque and $T_L(t)$ is the load torque. The electrical torque can be expressed as}
+    T_e(t) &= G_{fq}I_F i_a(t)
+    \intertext{and the load torque is modeled as a function of the motor speed $\omega_m(t)$ and a constant $B$ representing the load characteristics. Thus, we have}
+    T_L(t) &= B\omega_m(t) \label{eq:LoadTorque}
+    \intertext{The relationship between the torque and the angular velocity is given by the equation}
+    T(t) &= J \dfrac{d\omega_m(t)}{dt} + \omega_o
+\end{align}
+
+Since the motor is assumed to start from rest, it will be assumed that $\omega_o = 0$.
+
+\subsection{Laplace Transform of the DC Motor Model}
+To analyze the DC motor model in the frequency domain, we can apply the Laplace transform to the equations. The Laplace transform of the electrical equation is given by:
+\begin{equation}\label{eq:ElectricalLaplace}
+    V_a(s) = L_A s I_a(s) + R_A I_a(s) + V_{\text{rot}}(s)
+\end{equation}
+
+For instance, the back EMF will be considered as a disturbance at the input of the motor plant, which depends on the field current and the angular velocity of the motor:
+\begin{equation}
+    V_{\text{rot}}(s) = G_{fq} I_F \omega_m(s)
+\end{equation}
+
+The mechanical equation can also be transformed into the Laplace domain:
+\begin{equation}\label{eq:MechanicalLaplace}
+    T(s) = J s \omega_m(s) + T_L(s)
+\end{equation}
+As was done with the back EMF, the load torque will be considered as a disturbance at the output of the motor plant, which depends on the angular velocity of the motor:
+\begin{equation}\label{eq:LoadTorqueLaplace}
+    T_L(s) = B \omega_m(s)
+\end{equation}
+
+Using the \Cref{eq:ElectricalLaplace}, the transfer function of the electrical side of the DC motor can be obtained. The transfer function from the armature voltage to the armature current can be expressed as:
+\begin{equation}
+    \dfrac{I_a(s)}{V_a(s)} = \dfrac{1/R_A}{\tau s + 1}
+\end{equation}
+where $\tau = L_A/R_A$ is the time constant of the motor.
+
+In the same way, using the expression from \Cref{eq:LoadTorque}, and transforming it into the Laplace domain, the transfer function (or simply a gain) from the armature current to the electrical torque can be expressed as:
+\begin{equation}
+    \dfrac{T_e(s)}{I_a(s)} = G_{fq} I_F
+\end{equation}
+
+From the \Cref{eq:MechanicalLaplace}, the transfer function from the electrical torque to the angular velocity of the motor can be expressed as:
+\begin{equation}
+    \dfrac{\omega_m(s)}{T_e(s)} = \dfrac{1}{J s}
+\end{equation}
+
+The block diagram of the DC motor model can be represented as shown in \Cref{fig:DCMotorModel}. The input to the system is the armature voltage $V_a(s)$, and the output is the angular velocity of the motor $\omega_m(s)$.
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width = \textwidth]{Images/MotorDynamics.pdf}
+    \caption{Block diagram of the DC motor model.}
+    \label{fig:DCMotorModel}
+\end{figure}
+
+If the load torque is considered as it was it shown in \Cref{eq:LoadTorqueLaplace}, the block diagram can be modified to include the load torque as a disturbance at the output of the system, as shown in \Cref{fig:DCMotorModel_Torque}.
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width = \textwidth]{Images/MotorDynamics_Torque.pdf}
+    \caption{Block diagram of the DC motor model with load torque.}
+    \label{fig:DCMotorModel_Torque}
+\end{figure}
+
+\section{Data Analysis}
+\subsection{Data Collection}
+
+The DC motor data was collected from a simulation environment, where the motor was subjected to different armature voltages.
+
+\section{Reinforcement Learning}
+\subsection{Problem Formulation}
+
+The problem of controlling the DC motor can be formulated as a reinforcement learning problem. The state of the system can be defined as the angular velocity of the motor, and the action can be defined as the armature voltage applied to the motor. The reward can be defined as the negative of the absolute error between the desired angular velocity and the actual angular velocity of the motor.
+\subsection{Reinforcement Learning Algorithm}
+
+The reinforcement learning algorithm used in this work is the deep deterministic policy gradient (DDPG) algorithm. This algorithm is suitable for continuous action spaces, such as the armature voltage of the DC motor. The DDPG algorithm uses an actor-critic architecture, where the actor learns the policy and the critic learns the value function.
+\subsection{Neural Network Architecture}
+
+The neural network architecture used in this work consists of two fully connected networks: one for the actor and one for the critic. The actor network takes the state of the system as input and outputs the action to be taken, while the critic network takes the state and action as input and outputs the value of the action.
+\subsection{Training and Evaluation}
+
+\section{Results}
+
+\section{Conclusion}
+
+In this report, the application of machine learning techniques to model and control a DC motor was explored. The mathematical model of the DC motor, including its electrical and mechanical components was presented. Also, it was discussed the Laplace transform of the DC motor model and its block diagram representation.
+
+Furthermore, we have formulated the problem of controlling the DC motor as a reinforcement learning problem and applied the deep deterministic policy gradient (DDPG) algorithm to learn the optimal control policy. The results show that the DDPG algorithm can effectively learn to control the DC motor and achieve the desired angular velocity.
+
+\nocite{*}
+\bibliographystyle{ieeetr}
+\bibliography{bib.bib}
