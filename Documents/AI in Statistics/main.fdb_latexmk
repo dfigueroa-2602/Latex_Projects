@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1749587030.46565 "main.aux" "main.bbl" "main" 1749587224.85705 0
+["bibtex main"] 1749593216.44952 "main.aux" "main.bbl" "main" 1749593460.79001 0
   "./bib.bib" 1749579779 200 9394156c80b879d78c582238ac2b1934 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/bibtex/bst/bibtex/ieeetr.bst" 1291864344 18361 1a00e58565e7f19bf2b3e1bfb82254ae ""
-  "main.aux" 1749587223 5001 a8691d0601ba35126789425fe711dbd8 "pdflatex"
+  "main.aux" 1749593459 5776 934fcd48e46ea4876d2bc1c659b6ecbd "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1749587221.94372 "c:/Users/Dave/Documents/git/Latex_Projects/Documents/AI in Statistics/main.tex" "main.pdf" "main" 1749587224.85773 0
+["pdflatex"] 1749593458.86383 "c:/Users/Dave/Documents/git/Latex_Projects/Documents/AI in Statistics/main.tex" "main.pdf" "main" 1749593460.79094 0
   "C:/Users/Dave/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1749329478 123198 3bbd8409905bfb5918bb33e6a0462096 ""
   "C:/Users/Dave/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1749329473 13158840 f9a3bf93b6392339276d48e92d7763bc ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -24,17 +24,14 @@
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/tfm/jknappen/ec/ecrm1200.tfm" 993062126 3152 4850ff0163852b7fab34bd55e1197f28 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1233951854 916 f87d7c45f9c908e672703b83b72241a3 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/symbols/msbm10.tfm" 1233951854 908 2921f8a10601f252058503cc6570e581 ""
-  "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmbx10.tfm" 1136765053 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmex10.tfm" 1136765053 992 662f679a0b3d2d53c1b94050fdaa3f50 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmmi10.tfm" 1136765053 1528 abec98dbc43e172678c11b3b9031252a ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmr10.tfm" 1136765053 1296 45809c5a464d5f32c8f98ba97c1bb47f ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmr12.tfm" 1136765053 1288 655e228510b4c2a1abe905c368440826 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmsy10.tfm" 1136765053 1124 6c73e740cf17375f03eec0ee63599741 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/tfm/public/lm/ec-lmtt12.tfm" 1256929440 1368 6a60e6a5e029141041d64d339b87e533 ""
-  "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/tfm/public/mathpazo/fplmb.tfm" 1136768654 984 3dcde7360ef3d34302e591b511cba83c ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/tfm/public/mathpazo/fplmr.tfm" 1136768654 1032 7fa31d93ecd4cbdfac02c7a1ebc6facc ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/tfm/public/mathpazo/fplmri.tfm" 1136768654 1148 56b0fdf7ca3f800294e968f64cfdcb87 ""
-  "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/tfm/public/mathpazo/zplmb7t.tfm" 1136768654 1640 c14e51df62d6cb0dd79e4ca3b91ca7c3 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/tfm/public/mathpazo/zplmr7m.tfm" 1136768654 2080 40a71f65088bdd047622ce295520749e ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/tfm/public/mathpazo/zplmr7t.tfm" 1136768654 1828 bb8add3bd19426549f9267c88b0cb8bd ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/tfm/public/mathpazo/zplmr7v.tfm" 1136768654 1012 955c4ca523d7827d33db91a33412b048 ""
@@ -53,7 +50,6 @@
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/vf/adobe/palatino/pplr8t.vf" 1136768654 2324 a163806de13ddf37313d2ee968aa0a98 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/vf/adobe/palatino/pplrc8t.vf" 1136768654 3612 c9f70b808a41736c70babe50fdb9f79c ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/vf/adobe/palatino/pplri8t.vf" 1136768654 2308 5bc0a90b83a3fd7d37d34ef3b64d7e8a ""
-  "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/vf/public/mathpazo/zplmb7t.vf" 1136768654 1536 03ea9eccf9f5341331bed4d35eb9a3d8 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/vf/public/mathpazo/zplmr7m.vf" 1136768654 1812 de7624743c8bafe2ce204bec2f72ce7e ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/vf/public/mathpazo/zplmr7t.vf" 1136768654 1532 0ba0b316cfeb3df86c9701756c9a4b71 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/vf/public/mathpazo/zplmr7v.vf" 1136768654 1436 3cc3caf644d79936444909aaff6786a8 ""
@@ -128,13 +124,15 @@
   "Images/Motor.pdf" 1749579779 8780 b2aa5e48a48cf48f736c083df23329b3 ""
   "Images/MotorDynamics.pdf" 1749579779 16949 fbee104de97ca4f0e1c0000cf35137ae ""
   "Images/MotorDynamics_Torque.pdf" 1749579779 17327 5b485b263ea11e204bc59d7075bdb606 ""
-  "Images/RandomInitSpeedEta.eps" 1749587216 41132 dbd21f302100c328d8cc31807b91e04e ""
+  "Images/RandomInitSpeedEta.pdf" 1749587420 36403 278a1f696336ceba67bebe9092f9f5d7 ""
+  "Images/ReinforcementLearning.pdf" 1749592912 23049 92bda8471de1e8b5266d540b424280b4 ""
+  "Images/Sampling.pdf" 1749591907 5120 3c6f075ed40aab21f7d6aea3fd9e22c1 ""
   "Packages.tex" 1749579779 373 99c48c814574030a2305263ef6c210bd ""
-  "Report.tex" 1749587027 14364 0400b7531459e71266770cddb9cca588 ""
+  "Report.tex" 1749593458 16913 e8f8157398f9d610692bbdd30ee2fb38 ""
   "c:/Users/Dave/Documents/git/Latex_Projects/Documents/AI in Statistics/main.tex" 1749579779 130 fec267c5c8b043a281484b842e6fa223 ""
-  "main.aux" 1749587223 5001 a8691d0601ba35126789425fe711dbd8 "pdflatex"
-  "main.bbl" 1749587030 199 82f30059bd64be929d83c9901d00fbd8 "bibtex main"
-  "main.out" 1749587223 3462 06dbb9648d2a649fc0427b7c08f61b0c "pdflatex"
+  "main.aux" 1749593459 5776 934fcd48e46ea4876d2bc1c659b6ecbd "pdflatex"
+  "main.bbl" 1749593216 199 82f30059bd64be929d83c9901d00fbd8 "bibtex main"
+  "main.out" 1749593459 3462 06dbb9648d2a649fc0427b7c08f61b0c "pdflatex"
   "main.tex" 1749579779 130 fec267c5c8b043a281484b842e6fa223 ""
   (generated)
   "main.aux"

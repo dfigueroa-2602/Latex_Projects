@@ -122,64 +122,85 @@ A custom reset function, \texttt{localResetFcn}, was used to set:
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width = 0.8\textwidth]{Images/RandomInitSpeedEta.eps}
+    \includegraphics[width = 0.8\textwidth]{Images/RandomInitSpeedEta.pdf}
     \caption{Distribution of initial motor speed and reference speed across episodes.}
     \label{fig:InitDistribution}
 \end{figure}
 
 \Cref{fig:InitDistribution} shows the randomization space for the initial motor speed and the target reference speed across simulated episodes. This coverage helps ensure that the reinforcement learning agent generalizes to diverse operating conditions, reducing overfitting to a narrow region of the state space.
 
-This stochastic reset ensures coverage of a wide operating space, enabling robust policy learning.
-
 \subsection{Signal Logging and Sampling}
 
-Each episode lasted $T_f = 3$ seconds with a time step $T_s = 1$ ms. The simulation logged:
-\begin{itemize}
-    \item Armature voltage $V_a(t)$
-    \item Measured speed $\omega_m(t)$
-    \item Reference speed $\omega_{\text{ref}}(t)$
-\end{itemize}
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width = 0.52\textwidth]{Images/Sampling.pdf}
+    \caption{Example of sampling of a signal $f(t)$. The red line is the original signal, and the blue line is the sampled signal $f[k]$.}
+    \label{fig:Sampling}
+\end{figure}
+
+In digital control systems, the interaction between a controller and a plant is typically discrete, with the controller applying actions at regular intervals. The DC motor was simulated with a discrete time step of $T_s = 1\ \text{ms}$, corresponding to a sampling frequency of $f_s = 1000\ \text{Hz}$. This means the controller updates its actions every millisecond, as illustrated in \Cref{fig:Sampling}. Indeed, this discrete time step governs the resolution at which the agent interacts with the environment and updates its policy.
+
+Therefore, $\omega_m[k]$ is the motor speed at time step $k$, and $V_a[k]$ is the armature voltage applied at that step.
 
 \subsection{Preprocessing}
 
-All signals were measured in SI units. Angular velocity of the motor is expressed in rad/s and voltage expressed in V. The observation vector was:
-\[
-\mathbf{o}(t) = 
-\begin{bmatrix}
-\omega_{\text{ref}}(t) \\
-\omega_m(t) \\
-\omega_{\text{ref}}(t) - \omega_m(t)
-\end{bmatrix}
-\]
+In control systems, it is common to use the integral of the error as part of the state representation. Therefore, the cumulative error was computed as:
+\begin{equation}
+    I_e[k] = \min\left( \max\left( e(t - T_s) + T_s \cdot e(t),\ -V_{\text{max}} \right),\ V_{\text{max}} \right)
+\end{equation}
 
+This integral term is bounded to prevent excessive accumulation, where $V_{\text{max}}$ is the maximum voltage applied to the motor.
+Using the integral of the error, the state vector $S(t)$ at each time step was defined as:
+
+\begin{equation}
+    S[k] = 
+    \begin{bmatrix}
+        \omega_{\text{ref}}[k] \\
+        \omega_m[k] \\
+        I_e[k]
+    \end{bmatrix}
+\end{equation}
+
+The action of the agent ($A[k]$) is the armature voltage applied at time step $k$, which is a continuous scalar value in the range $[0, 220]$ V.
 
 \section{Training and Evaluation}
 
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width = 0.8\textwidth]{Images/ReinforcementLearning.pdf}
+    \caption{Reinforcement learning diagram}
+    \label{fig:ReinforcementLearning}
+\end{figure}
+
+The control problem was formulated as a reinforcement learning task, where the agent learns to control the DC motor by interacting with the environment. The agent receives observations from the environment, takes actions based on its policy, and receives rewards based on its performance, as is shown in \Cref{fig:ReinforcementLearning}.
+The training process involved the following steps:
+\begin{itemize}
+    \item The agent observes the current state of the environment, represented by the state vector $S[k]$.
+    \item Based on its policy, the agent selects an action $A[k]$. In this case, the action will govern the armature voltage $V_a[k]$ applied to the motor.
+    \item The environment responds by updating the motor speed $\omega_m[k]$ and providing a reward $R[k]$ based on the tracking error.
+    \item The agent updates its policy based on the received reward and the observed state transition.
+    \item This process is repeated for a predefined number of episodes, allowing the agent to learn an optimal policy for controlling the motor.
+\end{itemize}
+
 The training was performed using the deep deterministic policy gradient (DDPG) algorithm with an actor-critic architecture. The environment was defined via \texttt{rlSimulinkEnv}, and reset logic was introduced through \texttt{localResetFcn}.
+
+To encourage sufficient exploration of the action space, the action output of the policy was perturbed using Ornstein–Uhlenbeck noise. This allowed the agent to discover control strategies that generalize across different initial conditions and reference profiles.
 
 \subsection{Reward Function}
 
 The scalar reward function at each time step penalized deviation from the reference:
-\[
-r(t) = -|\omega_{\text{ref}}(t) - \omega_m(t)|
-\]
+
+\begin{equation}
+    R[k] = -|\omega_{\text{ref}}(k) - \omega_m(k)|
+\end{equation}
 
 \subsection{Reinforcement Learning as a Markov Decision Process}
 
-The control problem was formulated as a Markov Decision Process (MDP), a foundational concept in reinforcement learning. The state space $\mathcal{S}$ consists of a three-dimensional vector:
-\[
-s_t = 
-\begin{bmatrix}
-\omega_{\text{ref}}(t) \\
-\omega_m(t) \\
-\omega_{\text{ref}}(t) - \omega_m(t)
-\end{bmatrix},
-\]
-representing the reference velocity, the current motor speed, and the tracking error.
+This closed-loop structure corresponds to a Markov Decision Process (MDP), where the state includes both reference and current speed, and the reward function guides the agent toward minimal steady-state and transient error.
 
-The action space $\mathcal{A}$ is the set of possible armature voltages $V_a(t)$, treated as a continuous scalar. The agent learns a deterministic policy $\pi: \mathcal{S} \to \mathcal{A}$ to minimize tracking error. The transition model is not known a priori but is embedded in the system dynamics simulated in \textsc{Simulink}.
+The action space $\mathcal{A}$ is the set of possible armature voltages $V_a[k]$, treated as a continuous scalar. The agent learns a deterministic policy $\pi: \mathcal{S} \to \mathcal{A}$ to minimize tracking error. The transition model is not known a priori but is embedded in the system dynamics simulated in \textsc{Simulink}.
 
-The reward function $r(s_t, a_t)$ penalizes deviations from the desired state. The Markov property is assumed to hold: the next state depends only on the current state and action, not on prior history.
+The reward function $R[k]$ penalizes deviations from the desired state. The Markov property is assumed to hold: the next state depends only on the current state and action, not on prior history.
 
 This abstraction aligns with the agent design framework discussed in the course, where intelligent decision-making under uncertainty is guided by a value function and updated via observed rewards.
 
