@@ -120,6 +120,15 @@ A custom reset function, \texttt{localResetFcn}, was used to set:
     \item Initial motor speed $\omega_m(0)$ within $[0.5, 1.5] \cdot \omega_{\text{ref}}$
 \end{itemize}
 
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width = 0.8\textwidth]{Images/RandomInitSpeedEta.eps}
+    \caption{Distribution of initial motor speed and reference speed across episodes.}
+    \label{fig:InitDistribution}
+\end{figure}
+
+\Cref{fig:InitDistribution} shows the randomization space for the initial motor speed and the target reference speed across simulated episodes. This coverage helps ensure that the reinforcement learning agent generalizes to diverse operating conditions, reducing overfitting to a narrow region of the state space.
+
 This stochastic reset ensures coverage of a wide operating space, enabling robust policy learning.
 
 \subsection{Signal Logging and Sampling}
