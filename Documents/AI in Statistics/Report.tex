@@ -17,7 +17,7 @@
 
 \section{Introduction}
 
-The precise control of DC motors is critical in numerous applications ranging from robotics and automation to electric vehicles and industrial machinery~\cite{BookUmans2013}. Traditional control methods, such as proportional-integral-derivative (PID) controllers, are widely used but often face limitations in handling complex, nonlinear dynamics and varying operational conditions. These limitations motivate the exploration of advanced control strategies, such as reinforcement learning (RL), capable of adapting autonomously to changing conditions and uncertainties~\cite{Arulkumaran2017}.
+The precise control of DC motors is critical in numerous applications ranging from robotics and automation to electric vehicles and industrial machinery~\cite{BookUmans2013,Sul2011}. Traditional control methods, such as proportional-integral-derivative (PID) controllers, are widely used but often face limitations in handling complex, nonlinear dynamics and varying operational conditions. These limitations motivate the exploration of advanced control strategies, such as reinforcement learning (RL), capable of adapting autonomously to changing conditions and uncertainties~\cite{Arulkumaran2017}.
 
 In this context, this project investigates the application of deep deterministic policy gradient (DDPG), a state-of-the-art RL technique. DDPG is particularly well-suited for continuous action spaces, making it an ideal candidate for controlling DC motors, where the control input is a continuous variable~\cite{Lillicrap2019}. The goal of this project is to develop a RL agent that learns to control the armature voltage applied to a DC motor in order to track a dynamically varying reference velocity. The agent will be trained using simulated data generated from a custom \textsc{Matlab Simulink} model of the DC motor, which captures the essential dynamics and characteristics of the system.
 
@@ -31,11 +31,12 @@ The subsequent sections detail the experimental approach, implementation specifi
 \end{figure}
 
 
+
 \section{DC Motor Model}
 
 \subsection{Mathematical Model}
 
-A DC motor can be modeled in terms of its electrical and mechanical components. The electrical part consists of the armature circuit, which includes the armature inductance, resistance, and back electromotive force (EMF). The equations governing the electrical dynamics of the motor are given by:
+A DC motor can be modeled in terms of its electrical and mechanical components~\cite{Sul2011}. The electrical part consists of the armature circuit, which includes the armature inductance, resistance, and back electromotive force (EMF). The equations governing the electrical dynamics of the motor are given by:
 \begin{equation}
     v_a(t) = L_A \dfrac{di_a(t)}{dt} + R_A i_a(t) + v_{\text{rot}}(t)
 \end{equation}
@@ -110,6 +111,38 @@ If the load torque is considered linearly depending on the speed, as it shown in
     \label{fig:DCMotorModel_Torque}
 \end{figure}
 
+The DC motor parameters used in this project are summarized in the \Cref{tab:DCMotorParameters}. These parameters were chosen to represent a typical $220\ \text{V}_{rms}$ DC motor, ensuring that the model captures realistic dynamics and behaviors.
+
+\begin{table}[ht!]
+    \centering
+    \caption{DC Motor Parameters}
+    \label{tab:DCMotorParameters}
+    \begin{tabular}{|l|l|}
+        \hline
+        \textbf{Parameter} & \textbf{Value} \\
+        \hline
+        Armature resistance $R_A$ & $0.835\ \Omega$ \\
+        Armature inductance $L_A$ & $22\ \text{mH}$ \\
+        Field current $I_F$ & $10\ \text{A}$ \\
+        Flux linkage constant $G_{fq}$ & $0.085\ \text{mH}$ \\
+        Inertia $J$ & $0.2\ \text{kgm}^2$ \\
+        Load torque constant $B$ & $0.5\ \text{Nm}s/rad$ \\
+        Maximum armature voltage $V_{\text{max}}$ & $220\ V$ \\
+        Minimum armature voltage $V_{\text{min}}$ & $-220\ V$ \\
+        Sampling time $T_s$ & $1\ ms$ \\
+        Maximum reference speed $\eta_{\text{max}}$ & $1600\ RPM$ \\
+        Minimum reference speed $\eta_{\text{min}}$ & $0\ RPM$ \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\textit{NOTE}: For the following sections, the speed is expressed in revolutions per minute (RPM) without loss of generality, as the model can be adapted to other units if necessary. The conversion from angular velocity in radians per second to RPM is given by:
+\begin{equation}
+    \eta_m(t) = \omega_m(t) \cdot \dfrac{\pi}{30}
+\end{equation}
+
+
+
 \section{Data Preparation}
 The dataset used for training the reinforcement learning controller was generated from a custom \textsc{Matlab Simulink} model of the DC motor. To provide variability for generalization, the simulation included randomized initial conditions for the integrator block and reference velocities.
 
@@ -117,8 +150,8 @@ The dataset used for training the reinforcement learning controller was generate
 
 A custom reset function, \texttt{localResetFcn}, was used to set:
 \begin{itemize}
-    \item Reference velocity $\omega_{\text{ref}} \in [0, 1600]$ RPM
-    \item Initial motor speed $\omega_m(0)$ within $[0.5, 1.5] \cdot \omega_{\text{ref}}$
+    \item Reference velocity $\eta_{\text{ref}} \in [0, 1600]$ RPM
+    \item Initial motor speed $\eta_m(0)$ within $[0.5, 1.5] \cdot \omega_{\text{ref}}$
 \end{itemize}
 
 \begin{figure}[ht!]
@@ -134,7 +167,7 @@ A custom reset function, \texttt{localResetFcn}, was used to set:
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width = 0.52\textwidth]{Images/Sampling.pdf}
+    \includegraphics[width = 0.7\textwidth]{Images/Sampling.pdf}
     \caption{Example of sampling of a signal $f(t)$. The red line is the original signal, and the blue line is the sampled signal $f[k]$.}
     \label{fig:Sampling}
 \end{figure}
@@ -149,7 +182,7 @@ Therefore, $\omega_m[k]$ is the motor speed at time step $k$, and $V_a[k]$ is th
 
 In control systems, it is common to use the integral of the error as part of the state representation. Therefore, the cumulative error was computed as:
 \begin{equation}
-    I_e[k] = \min\left( \max\left( e(t - T_s) + T_s \cdot e(t),\ -V_{\text{max}} \right),\ V_{\text{max}} \right)
+    I_e[k] = \min\left( \max\left( e(k - T_s) + T_s \cdot e(k),\ -V_{\text{max}} \right),\ V_{\text{max}} \right)
 \end{equation}
 
 This integral term is bounded to prevent excessive accumulation, where $V_{\text{max}}$ is the maximum voltage applied to the motor.
@@ -209,7 +242,7 @@ This abstraction aligns with the agent design framework discussed in the course,
 
 \subsection{Learning Agent Architecture}
 
-The implemented controller corresponds to a utility-based learning agent. This architecture decomposes into four functional components:
+The implemented controller corresponds to a utility-based learning agent~\cite{Lillicrap2019}. This architecture decomposes into four functional components:
 
 \begin{itemize}
     \item \textbf{Performance element:} a deep neural network (DNN) policy (actor) outputs the control action, and a critic network evaluates its expected value.
@@ -225,12 +258,12 @@ This structure matches the "learning agent" model from the course: an autonomous
 \begin{figure}[ht!]
     \centering
     \subfigure[Actor Network]{%
-        \includegraphics[width = 0.3\textwidth]{Images/NetworkArchitectureDiagram.pdf}
+        \includegraphics[width = 0.35\textwidth]{Images/NetworkArchitectureDiagram.pdf}
     }
     \subfigure[Critic Network]{%
-        \includegraphics[width = 0.3\textwidth]{Images/CriticArchitectureDiagram.pdf}
+        \includegraphics[width = 0.33\textwidth]{Images/CriticArchitectureDiagram.pdf}
     }
-    \caption{Neuronal network architectures}
+    \caption{Neural network architectures}
     \label{fig:NeuronalNetworkDiagram}
 \end{figure}
 
@@ -271,10 +304,11 @@ To enhance computational efficiency and accelerate the learning process, paralle
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width = 0.6\textwidth]{Images/TrainingProcess.pdf}
+    \includegraphics[width = 0.85\textwidth]{Images/TrainingProcess.pdf}
     \caption{Training process along the episodes.}
     \label{fig:TrainingProcess}
 \end{figure}
+
 
 
 \section{Results}
@@ -289,10 +323,25 @@ Additionally, despite the randomized initial conditions, the agent consistently 
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width = 0.8\textwidth]{Images/MotorSpeed.pdf}
+    \includegraphics[width = 0.85\textwidth]{Images/MotorSpeed.pdf}
     \caption{Motor speed tracking performance.}
     \label{fig:MotorSpeed}
 \end{figure}
+
+In order to quantify the tracking performance, the absolute tracking error was computed as the difference between the reference angular velocity and the current motor speed. The absolute error is defined as:
+\begin{equation}
+    e_{\text{abs}}(t) = |\eta_{\text{ref}}(t) - \eta_m(t)|
+\end{equation}
+
+\begin{figure}[ht!]
+    \centering
+    \subfigure[General view.]{\includegraphics[width = 0.4\textwidth]{Images/AbsError.pdf}}
+    \subfigure[Magnitude zoomed view.]{\includegraphics[width = 0.4\textwidth]{Images/AbsError_Zoom.pdf}}
+    \caption{Absolute error of the motor speed tracking.}
+    \label{fig:AbsError}
+\end{figure}
+
+From the \Cref{fig:MotorSpeed} and \Cref{fig:AbsError}, it can be observed that the absolute tracking error remained consistently low throughout the evaluation period, with an increasing trend while the reference speed was increasing. As a future work, this trend could be further analyzed to determine if it is due to the limitations of the model or if it can be improved by fine-tuning the hyperparameters or modifying the reward function. The settling time for the motor speed to reach the reference value was approximately $0.6\ s$ for each step change in the reference speed.
 
 \subsection{Control Behavior}
 
@@ -300,7 +349,7 @@ The control voltage $V_a(t)$ applied by the DDPG agent remained smooth and was r
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width = 0.8\textwidth]{Images/ArmatureVoltage.pdf}
+    \includegraphics[width = 0.85\textwidth]{Images/ArmatureVoltage.pdf}
     \caption{Armature voltage applied by the RL controller.}
     \label{fig:ArmatureVoltage}
 \end{figure}
@@ -311,18 +360,20 @@ The reward curve, presented in \Cref{fig:Reward}, illustrates a clear and steady
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width = 0.8\textwidth]{Images/Reward.pdf}
+    \includegraphics[width = 0.85\textwidth]{Images/Reward.pdf}
     \caption{Reward curve during the simulation.}
     \label{fig:Reward}
 \end{figure}
 
 \section{Conclusion}
 
-In this report, it was demonstrated that the DDPG algorithm is an effective and robust method for controlling DC motors in dynamic and uncertain conditions. The trained agent consistently exhibited accurate tracking performance with minimal overshoot and low steady-state error, even under varying reference velocities and randomized initial conditions. Furthermore, it was observed that the applied control voltages were smooth and consistently bounded within practical operational limits, ensuring mechanical stability and reliability.
+In this report, it was demonstrated that the DDPG algorithm is an effective and robust method for controlling DC motors in dynamic and uncertain conditions. The trained agent consistently exhibited accurate tracking performance with minimal overshoot and low \linebreak steady-state error, even under varying reference velocities and randomized initial conditions. Furthermore, it was observed that the applied control voltages were smooth and consistently bounded within practical operational limits, ensuring mechanical stability and reliability.
 
 The reward curve clearly illustrated progressive improvement, confirming that the agent successfully learned an optimal control policy through RL. This smooth convergence pattern underscored the stability and effectiveness of the chosen training methodology and hyperparameter settings.
 
 Overall, the findings from this project provide strong support for the adoption of RL techniques in practical control scenarios, highlighting their advantages over traditional methods in terms of adaptability, robustness, and overall performance.
+
+\clearpage
 
 \nocite{*}
 \bibliographystyle{ieeetr}

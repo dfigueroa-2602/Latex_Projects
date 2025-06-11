@@ -5,6 +5,10 @@ S.~Umans, A.~Fitzgerald, and C.~Kingsley, {\em Electric Machinery: Seventh
   Edition}.
 \newblock McGraw-Hill, 2013.
 
+\bibitem{Sul2011}
+S.~Sul, {\em Control of Electric Machine Drive Systems}.
+\newblock IEEE Press Series on Power and Energy Systems, Wiley, 2011.
+
 \bibitem{Arulkumaran2017}
 K.~Arulkumaran, M.~P. Deisenroth, M.~Brundage, and A.~A. Bharath, ``Deep
   {{Reinforcement Learning}}: {{A Brief Survey}},'' {\em IEEE Signal Processing

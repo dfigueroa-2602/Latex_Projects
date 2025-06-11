@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1749636350.69164 "main.aux" "main.bbl" "main" 1749636375.09325 0
-  "./bib.bib" 1749636315 4021 abc5c36b6b262599dcbb7c0646e1fc1b ""
+["bibtex main"] 1749643522.58707 "main.aux" "main.bbl" "main" 1749643524.00287 0
+  "./bib.bib" 1749641350 4240 75b1f0900dbb9b3b2ec3c03e4945bb5b ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/bibtex/bst/bibtex/ieeetr.bst" 1291864344 18361 1a00e58565e7f19bf2b3e1bfb82254ae ""
-  "main.aux" 1749636374 9295 385db83b4a2410198221b4ca369ad64a "pdflatex"
+  "main.aux" 1749643523 10525 dad4d6616de60d7e093080b094e4ae25 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1749636374.06743 "c:/Users/Dave/Documents/git/Latex_Projects/Documents/AI in Statistics/main.tex" "main.pdf" "main" 1749636375.09356 0
+["pdflatex"] 1749643522.76192 "c:/Users/Dave/Documents/git/Latex_Projects/Documents/AI in Statistics/main.tex" "main.pdf" "main" 1749643524.00319 0
   "C:/Users/Dave/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1749635358 123198 3bbd8409905bfb5918bb33e6a0462096 ""
   "C:/Users/Dave/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ectt1200.pk" 1749635239 24152 4763e48fae7c66e09ff9818218fb8ea9 ""
   "C:/Users/Dave/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1747149064 13157157 dc7e5788aae9820ed782ce41242cd78f ""
@@ -41,6 +41,7 @@
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1247596667 30251 6afa5cb1d0204815a708a080681d4674 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1247596667 35752 024fb6c41858982481f6968b5fc26508 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1247596667 32569 5e5ddc8df908dea60932f3c484a54c0d ""
+  "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmr.pfb" 1136849748 9356 3e1f7eacbb57d05d0b682da8d83eb600 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmri.pfb" 1136849748 15213 d999bbe8bd9c8f231f3f66a737c76478 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplb8a.pfb" 1136849748 52406 dad2f72863a03727d5f536c64a69c452 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplbi8a.pfb" 1136849748 51285 a23fbd59aeaa61f5a504e70284f9de4f ""
@@ -126,13 +127,15 @@
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/tex/latex/tex-gyre/tgpagella.sty" 1525740614 2230 fc853fd117e6b73f5d6716214d3abb3c ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
-  "Configuration.tex" 1749635466 730 52673f4e868948e35f97adc9813a7521 ""
+  "Configuration.tex" 1749640617 731 7f8a713f45bebbf609e591a5e6c750b9 ""
+  "Images/AbsError.pdf" 1749643207 43981 be3d98c0c9de3ad146712a47faea743f ""
+  "Images/AbsError_Zoom.pdf" 1749643220 35001 86ea3e993169ed6adc5b3be5815adc56 ""
   "Images/ArmatureVoltage.pdf" 1749630342 39969 d1d22d2a887ee8949a3ef19046f15cc9 ""
   "Images/CriticArchitectureDiagram.pdf" 1749627454 31477 2f8f8b79402303c46bf08f8b0bcfc279 ""
   "Images/Motor.pdf" 1749565614 8780 b2aa5e48a48cf48f736c083df23329b3 ""
   "Images/MotorDynamics.pdf" 1749571516 16949 fbee104de97ca4f0e1c0000cf35137ae ""
   "Images/MotorDynamics_Torque.pdf" 1749571740 17327 5b485b263ea11e204bc59d7075bdb606 ""
-  "Images/MotorSpeed.pdf" 1749630366 53447 595a4ee24969454fe7216d7d0334eeb8 ""
+  "Images/MotorSpeed.pdf" 1749642273 54679 0cdf215cea1ae660726bbb8fe397e47d ""
   "Images/NetworkArchitectureDiagram.pdf" 1749626615 21021 d1c983a734061f76f85bd1c8d297b12c ""
   "Images/RandomInitSpeedEta.pdf" 1749587409 36403 278a1f696336ceba67bebe9092f9f5d7 ""
   "Images/ReinforcementLearning.pdf" 1749625434 23049 92bda8471de1e8b5266d540b424280b4 ""
@@ -140,11 +143,11 @@
   "Images/Sampling.pdf" 1749625434 5120 3c6f075ed40aab21f7d6aea3fd9e22c1 ""
   "Images/TrainingProcess.pdf" 1749629864 77628 6c97dc819f44a62e295a6ef0efcacfe6 ""
   "Packages.tex" 1749635367 426 0733cfe34009492bbaf3ee9e780bb483 ""
-  "Report.tex" 1749636373 23458 72e6adf8ce311423637b445c87d5ab55 ""
+  "Report.tex" 1749643521 26268 f452c57dc6c620877a2a185da78d8148 ""
   "c:/Users/Dave/Documents/git/Latex_Projects/Documents/AI in Statistics/main.tex" 1749573663 130 fec267c5c8b043a281484b842e6fa223 ""
-  "main.aux" 1749636374 9295 385db83b4a2410198221b4ca369ad64a "pdflatex"
-  "main.bbl" 1749636350 789 7ef0e26c84aff3bc2c9886c1b07fc32e "bibtex main"
-  "main.out" 1749636374 3276 8acf5a9854fba2e446a1d7000ba8924b "pdflatex"
+  "main.aux" 1749643523 10525 dad4d6616de60d7e093080b094e4ae25 "pdflatex"
+  "main.bbl" 1749643522 939 ca4c87fd02ba3bff77aa25c87cf75c3b "bibtex main"
+  "main.out" 1749643523 3276 8acf5a9854fba2e446a1d7000ba8924b "pdflatex"
   "main.tex" 1749573663 130 fec267c5c8b043a281484b842e6fa223 ""
   (generated)
   "main.aux"

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.5.13)  11 JUN 2025 12:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.5.13)  11 JUN 2025 14:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -436,7 +436,7 @@ LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 1
  (C:\Users\Dave\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
-<Images/Motor.pdf, id=86, 198.7425pt x 73.27374pt>
+<Images/Motor.pdf, id=87, 198.7425pt x 73.27374pt>
 File: Images/Motor.pdf Graphic file (type pdf)
 <use Images/Motor.pdf>
 Package pdftex.def Info: Images/Motor.pdf  used on input line 28.
@@ -447,118 +447,129 @@ Package pdftex.def Info: Images/Motor.pdf  used on input line 28.
 
 {C:/Users/Dave/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <./Images/Motor.pdf>]
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 12.50409pt on input line 39.
+(Font)              scaled to size 12.50409pt on input line 40.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 39.
+(Font)              scaled to size 9.37807pt on input line 40.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 39.
+(Font)              scaled to size 7.29405pt on input line 40.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 12.50409pt on input line 39.
+(Font)              scaled to size 12.50409pt on input line 40.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 39.
+(Font)              scaled to size 9.37807pt on input line 40.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 39.
+(Font)              scaled to size 7.29405pt on input line 40.
 
 
 [2]
-<Images/MotorDynamics.pdf, id=130, 367.3725pt x 92.345pt>
+<Images/MotorDynamics.pdf, id=133, 367.3725pt x 92.345pt>
 File: Images/MotorDynamics.pdf Graphic file (type pdf)
 <use Images/MotorDynamics.pdf>
-Package pdftex.def Info: Images/MotorDynamics.pdf  used on input line 100.
+Package pdftex.def Info: Images/MotorDynamics.pdf  used on input line 101.
 (pdftex.def)             Requested size: 483.69687pt x 121.5928pt.
-<Images/MotorDynamics_Torque.pdf, id=133, 367.3725pt x 86.3225pt>
+<Images/MotorDynamics_Torque.pdf, id=136, 367.3725pt x 86.3225pt>
 File: Images/MotorDynamics_Torque.pdf Graphic file (type pdf)
 <use Images/MotorDynamics_Torque.pdf>
-Package pdftex.def Info: Images/MotorDynamics_Torque.pdf  used on input line 108.
+Package pdftex.def Info: Images/MotorDynamics_Torque.pdf  used on input line 109.
 (pdftex.def)             Requested size: 483.69687pt x 113.66283pt.
 
 
 [3 <./Images/MotorDynamics.pdf>]
-LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 120.
+LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 153.
  (C:\Users\Dave\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ppl.fd
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
-<Images/RandomInitSpeedEta.pdf, id=147, 645.41125pt x 404.51125pt>
+<Images/RandomInitSpeedEta.pdf, id=153, 645.41125pt x 404.51125pt>
 File: Images/RandomInitSpeedEta.pdf Graphic file (type pdf)
 <use Images/RandomInitSpeedEta.pdf>
-Package pdftex.def Info: Images/RandomInitSpeedEta.pdf  used on input line 126.
+Package pdftex.def Info: Images/RandomInitSpeedEta.pdf  used on input line 159.
 (pdftex.def)             Requested size: 386.95897pt x 242.52344pt.
-<Images/Sampling.pdf, id=149, 191.71625pt x 127.47626pt>
+<Images/Sampling.pdf, id=155, 191.71625pt x 127.47626pt>
 File: Images/Sampling.pdf Graphic file (type pdf)
 <use Images/Sampling.pdf>
-Package pdftex.def Info: Images/Sampling.pdf  used on input line 137.
-(pdftex.def)             Requested size: 251.52443pt x 167.2538pt.
+Package pdftex.def Info: Images/Sampling.pdf  used on input line 170.
+(pdftex.def)             Requested size: 338.58632pt x 225.1661pt.
 
 
-[4 <./Images/MotorDynamics_Torque.pdf> <./Images/RandomInitSpeedEta.pdf>]
-<Images/ReinforcementLearning.pdf, id=185, 220.825pt x 109.40875pt>
+[4 <./Images/MotorDynamics_Torque.pdf>]
+
+[5 <./Images/RandomInitSpeedEta.pdf> <./Images/Sampling.pdf>]
+<Images/ReinforcementLearning.pdf, id=198, 220.825pt x 109.40875pt>
 File: Images/ReinforcementLearning.pdf Graphic file (type pdf)
 <use Images/ReinforcementLearning.pdf>
-Package pdftex.def Info: Images/ReinforcementLearning.pdf  used on input line 173.
+Package pdftex.def Info: Images/ReinforcementLearning.pdf  used on input line 206.
 (pdftex.def)             Requested size: 386.95897pt x 191.73024pt.
 
 
-[5 <./Images/Sampling.pdf>]
-
 [6 <./Images/ReinforcementLearning.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 216--217
+Underfull \hbox (badness 10000) in paragraph at lines 249--250
 []\T1/ppl/b/n/12 Learning el-e-ment: \T1/ppl/m/n/12 the pol-icy and value func-tion are up-dated through
  []
 
-<Images/NetworkArchitectureDiagram.pdf, id=214, 237.88875pt x 372.39125pt>
-File: Images/NetworkArchitectureDiagram.pdf Graphic file (type pdf)
-<use Images/NetworkArchitectureDiagram.pdf>
-Package pdftex.def Info: Images/NetworkArchitectureDiagram.pdf  used on input line 229.
-(pdftex.def)             Requested size: 145.11053pt x 227.164pt.
-<Images/CriticArchitectureDiagram.pdf, id=215, 322.20375pt x 531.9875pt>
-File: Images/CriticArchitectureDiagram.pdf Graphic file (type pdf)
-<use Images/CriticArchitectureDiagram.pdf>
-Package pdftex.def Info: Images/CriticArchitectureDiagram.pdf  used on input line 232.
-(pdftex.def)             Requested size: 145.11053pt x 239.5951pt.
 
 
 [7]
+<Images/NetworkArchitectureDiagram.pdf, id=227, 237.88875pt x 372.39125pt>
+File: Images/NetworkArchitectureDiagram.pdf Graphic file (type pdf)
+<use Images/NetworkArchitectureDiagram.pdf>
+Package pdftex.def Info: Images/NetworkArchitectureDiagram.pdf  used on input line 262.
+(pdftex.def)             Requested size: 169.29684pt x 265.03036pt.
+<Images/CriticArchitectureDiagram.pdf, id=228, 322.20375pt x 531.9875pt>
+File: Images/CriticArchitectureDiagram.pdf Graphic file (type pdf)
+<use Images/CriticArchitectureDiagram.pdf>
+Package pdftex.def Info: Images/CriticArchitectureDiagram.pdf  used on input line 265.
+(pdftex.def)             Requested size: 159.62085pt x 263.55786pt.
+
 
 [8 <./Images/NetworkArchitectureDiagram.pdf> <./Images/CriticArchitectureDiagram.pdf
 
 pdfTeX warning: pdflatex (file ./Images/CriticArchitectureDiagram.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-<Images/TrainingProcess.pdf, id=235, 515.9275pt x 373.395pt>
+<Images/TrainingProcess.pdf, id=243, 515.9275pt x 373.395pt>
 File: Images/TrainingProcess.pdf Graphic file (type pdf)
 <use Images/TrainingProcess.pdf>
-Package pdftex.def Info: Images/TrainingProcess.pdf  used on input line 274.
-(pdftex.def)             Requested size: 290.22107pt x 210.05125pt.
+Package pdftex.def Info: Images/TrainingProcess.pdf  used on input line 307.
+(pdftex.def)             Requested size: 411.14528pt x 297.5712pt.
 
 
-[9 <./Images/TrainingProcess.pdf>]
-<Images/MotorSpeed.pdf, id=268, 779.91376pt x 295.1025pt>
+[9]
+<Images/MotorSpeed.pdf, id=250, 779.91376pt x 295.1025pt>
 File: Images/MotorSpeed.pdf Graphic file (type pdf)
 <use Images/MotorSpeed.pdf>
-Package pdftex.def Info: Images/MotorSpeed.pdf  used on input line 292.
-(pdftex.def)             Requested size: 386.95897pt x 146.41614pt.
-<Images/ArmatureVoltage.pdf, id=270, 773.89125pt x 295.1025pt>
+Package pdftex.def Info: Images/MotorSpeed.pdf  used on input line 326.
+(pdftex.def)             Requested size: 411.14528pt x 155.56602pt.
+
+
+[10 <./Images/TrainingProcess.pdf> <./Images/MotorSpeed.pdf>]
+<Images/AbsError.pdf, id=306, 315.1775pt x 201.75375pt>
+File: Images/AbsError.pdf Graphic file (type pdf)
+<use Images/AbsError.pdf>
+Package pdftex.def Info: Images/AbsError.pdf  used on input line 338.
+(pdftex.def)             Requested size: 193.47578pt x 123.84846pt.
+<Images/AbsError_Zoom.pdf, id=307, 305.14pt x 201.75375pt>
+File: Images/AbsError_Zoom.pdf Graphic file (type pdf)
+<use Images/AbsError_Zoom.pdf>
+Package pdftex.def Info: Images/AbsError_Zoom.pdf  used on input line 339.
+(pdftex.def)             Requested size: 193.47578pt x 127.92749pt.
+<Images/ArmatureVoltage.pdf, id=311, 773.89125pt x 295.1025pt>
 File: Images/ArmatureVoltage.pdf Graphic file (type pdf)
 <use Images/ArmatureVoltage.pdf>
-Package pdftex.def Info: Images/ArmatureVoltage.pdf  used on input line 303.
-(pdftex.def)             Requested size: 386.95897pt x 147.55537pt.
+Package pdftex.def Info: Images/ArmatureVoltage.pdf  used on input line 352.
+(pdftex.def)             Requested size: 411.14528pt x 156.78181pt.
 
 
-[10 <./Images/MotorSpeed.pdf> <./Images/ArmatureVoltage.pdf>]
-<Images/Reward.pdf, id=321, 776.9025pt x 295.1025pt>
+[11 <./Images/AbsError.pdf> <./Images/AbsError_Zoom.pdf> <./Images/ArmatureVoltage.pdf>]
+<Images/Reward.pdf, id=376, 776.9025pt x 295.1025pt>
 File: Images/Reward.pdf Graphic file (type pdf)
 <use Images/Reward.pdf>
-Package pdftex.def Info: Images/Reward.pdf  used on input line 314.
-(pdftex.def)             Requested size: 386.95897pt x 146.988pt.
+Package pdftex.def Info: Images/Reward.pdf  used on input line 363.
+(pdftex.def)             Requested size: 411.14528pt x 156.17392pt.
 
-Overfull \hbox (8.69337pt too wide) in paragraph at lines 321--322
-\T1/ppl/m/n/12 con-sis-tently ex-hib-ited ac-cu-rate track-ing per-for-mance with min-i-mal over-shoot and low steady-
- []
 
-(main.bbl
+[12 <./Images/Reward.pdf>] (main.bbl))
 
-[11 <./Images/Reward.pdf>]))
+[13
 
-[12] (main.aux)
+] (main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-04-14>
@@ -567,17 +578,17 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 8ACF5A9854FBA2E446A1D7000BA8924B;3276.
  ) 
 Here is how much of TeX's memory you used:
- 14434 strings out of 469941
- 240440 string characters out of 5469914
- 650995 words of memory out of 5000000
- 40976 multiletter control sequences out of 15000+600000
+ 14465 strings out of 469941
+ 241169 string characters out of 5469914
+ 652995 words of memory out of 5000000
+ 40999 multiletter control sequences out of 15000+600000
  666836 words of font info for 125 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 74i,10n,82p,892b,562s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\Dave\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmri.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplbi8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (12 pages, 528252 bytes).
+ 74i,13n,82p,892b,512s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\Dave\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmr.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmri.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplbi8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on main.pdf (13 pages, 618620 bytes).
 PDF statistics:
- 422 PDF objects out of 1000 (max. 8388607)
- 67 named destinations out of 1000 (max. 500000)
- 221 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 485 PDF objects out of 1000 (max. 8388607)
+ 75 named destinations out of 1000 (max. 500000)
+ 231 words of extra memory for PDF output out of 10000 (max. 10000000)
 
