@@ -5,4 +5,18 @@ S.~Umans, A.~Fitzgerald, and C.~Kingsley, {\em Electric Machinery: Seventh
   Edition}.
 \newblock McGraw-Hill, 2013.
 
+\bibitem{Arulkumaran2017}
+K.~Arulkumaran, M.~P. Deisenroth, M.~Brundage, and A.~A. Bharath, ``Deep
+  {{Reinforcement Learning}}: {{A Brief Survey}},'' {\em IEEE Signal Processing
+  Magazine}, vol.~34, pp.~26--38, Nov. 2017.
+
+\bibitem{Lillicrap2019}
+T.~P. Lillicrap, J.~J. Hunt, A.~Pritzel, N.~Heess, T.~Erez, Y.~Tassa,
+  D.~Silver, and D.~Wierstra, ``Continuous control with deep reinforcement
+  learning,'' July 2019.
+
+\bibitem{Uhlenbeck1930}
+G.~E. Uhlenbeck and L.~S. Ornstein, ``On the theory of the brownian motion,''
+  {\em Phys. Rev.}, vol.~36, pp.~823--841, Sep 1930.
+
 \end{thebibliography}

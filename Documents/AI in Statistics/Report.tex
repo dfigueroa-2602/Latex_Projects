@@ -17,11 +17,11 @@
 
 \section{Introduction}
 
-In power electronics, the usage of DC motors is prevalent due to their simplicity and efficiency~\cite{BookUmans2013}. These motor can be found in various applications, from small toys to large industrial machines. The control of these motors is crucial for their performance and efficiency.
+The precise control of DC motors is critical in numerous applications ranging from robotics and automation to electric vehicles and industrial machinery~\cite{BookUmans2013}. Traditional control methods, such as proportional-integral-derivative (PID) controllers, are widely used but often face limitations in handling complex, nonlinear dynamics and varying operational conditions. These limitations motivate the exploration of advanced control strategies, such as reinforcement learning (RL), capable of adapting autonomously to changing conditions and uncertainties~\cite{Arulkumaran2017}.
 
-Generally, the DC motors are attached to a load, which can be anything from a simple fan to a complex robotic arm. The load characteristics can significantly affect the performance of the motor, and thus, it is essential to model the motor and its load accurately. An example of a DC motor and its load is shown in the \Cref{fig:DCMotor}.
+In this context, this project investigates the application of deep deterministic policy gradient (DDPG), a state-of-the-art RL technique. DDPG is particularly well-suited for continuous action spaces, making it an ideal candidate for controlling DC motors, where the control input is a continuous variable~\cite{Lillicrap2019}. The goal of this project is to develop a RL agent that learns to control the armature voltage applied to a DC motor in order to track a dynamically varying reference velocity. The agent will be trained using simulated data generated from a custom \textsc{Matlab Simulink} model of the DC motor, which captures the essential dynamics and characteristics of the system.
 
-In this report, we will explore the application of machine learning techniques to model and control a DC motor.
+The subsequent sections detail the experimental approach, implementation specifics, and the comprehensive evaluation of the trained agent. The results highlight the advantages of RL in addressing practical challenges inherent in DC motor control, providing both theoretical insights and practical validation of the DDPG framework.
 
 \begin{figure}[ht!]
     \centering
@@ -37,13 +37,14 @@ In this report, we will explore the application of machine learning techniques t
 
 A DC motor can be modeled in terms of its electrical and mechanical components. The electrical part consists of the armature circuit, which includes the armature inductance, resistance, and back electromotive force (EMF). The equations governing the electrical dynamics of the motor are given by:
 \begin{equation}
-    V_a(t) = L_A \dfrac{di_a(t)}{dt} + R_A i_a(t) + V_{\text{rot}}(t)
+    v_a(t) = L_A \dfrac{di_a(t)}{dt} + R_A i_a(t) + v_{\text{rot}}(t)
 \end{equation}
-where $L_A$ is the armature inductance, $R_A$ is the armature resistance, $V_a(t)$ is the armature voltage of the motor and $i_f(t)$ is the field current. For simplicity, in this work the field current will be considered constant ($i_f(t) = I_F$). $V_{\text{rot}}(t)$ is the back EMF given by:
+where $L_A$ is the armature inductance, $R_A$ is the armature resistance, $V_a(t)$ is the armature voltage of the motor and $i_a(t)$ is the armature current. The back EMF, which is proportional to the angular velocity of the motor, can be expressed as:
 \begin{equation}
-    V_{\text{rot}}(t) = G_{fq}i_f(t) \omega_m(t)
+    v_{\text{rot}}(t) = G_{fq}i_f(t) \omega_m(t)
 \end{equation}
-In this equation, $G_{fq}$ is the field-to-rotor flux linkage constant and $\omega_m(t)$ is the angular velocity of the motor.
+In this equation, $G_{fq}$ is the field-to-rotor flux linkage constant, $i_f(t)$ is the field current, which will be considered constant ($i_f(t) = I_F$), and $\omega_m(t)$ is the angular velocity of the motor.
+
 The mechanical part of the motor is described by the torque equation:
 \begin{align}
     T(t) &= T_e(t) - T_L(t)
@@ -58,7 +59,7 @@ The mechanical part of the motor is described by the torque equation:
 Since the motor is assumed to start from rest, it will be assumed that $\omega_o = 0$.
 
 \subsection{Laplace Transform of the DC Motor Model}
-To analyze the DC motor model in the frequency domain, we can apply the Laplace transform to the equations. The Laplace transform of the electrical equation is given by:
+To analyze the DC motor model in the frequency domain, we can apply the Laplace transform to equations that were aforementioned before. The Laplace transform of the electrical equation is given by:
 \begin{equation}\label{eq:ElectricalLaplace}
     V_a(s) = L_A s I_a(s) + R_A I_a(s) + V_{\text{rot}}(s)
 \end{equation}
@@ -101,7 +102,7 @@ The block diagram of the DC motor model can be represented as shown in \Cref{fig
     \label{fig:DCMotorModel}
 \end{figure}
 
-If the load torque is considered as it was it shown in \Cref{eq:LoadTorqueLaplace}, the block diagram can be modified to include the load torque as a disturbance at the output of the system, as shown in \Cref{fig:DCMotorModel_Torque}.
+If the load torque is considered linearly depending on the speed, as it shown in \Cref{eq:LoadTorqueLaplace}, the block diagram can be modified to include the load torque as a disturbance at the output of the system, as shown in \Cref{fig:DCMotorModel_Torque}.
 \begin{figure}[ht!]
     \centering
     \includegraphics[width = \textwidth]{Images/MotorDynamics_Torque.pdf}
@@ -138,7 +139,9 @@ A custom reset function, \texttt{localResetFcn}, was used to set:
     \label{fig:Sampling}
 \end{figure}
 
-In digital control systems, the interaction between a controller and a plant is typically discrete, with the controller applying actions at regular intervals. The DC motor was simulated with a discrete time step of $T_s = 1\ \text{ms}$, corresponding to a sampling frequency of $f_s = 1000\ \text{Hz}$. This means the controller updates its actions every millisecond, as illustrated in \Cref{fig:Sampling}. Indeed, this discrete time step governs the resolution at which the agent interacts with the environment and updates its policy.
+The interaction between the controller and a plant is typically discrete in digital control systems. This process involves the acquisition of signals through analog-to-digital converters (ADC), where they are triggered each sampling time, as shown in the \Cref{fig:Sampling}. After processing the signals and applying the defined control low, the controller applies the actions each sample time.
+
+To emulate this real implementation, the DC motor was simulated with a discrete time step of $T_s = 1\ \text{ms}$, corresponding to a sampling frequency of $f_s = 1\ \text{kHz}$. This means the controller updates its actions every millisecond. Indeed, this discrete time step governs the resolution at which the agent interacts with the environment and updates its policy.
 
 Therefore, $\omega_m[k]$ is the motor speed at time step $k$, and $V_a[k]$ is the armature voltage applied at that step.
 
@@ -206,26 +209,42 @@ This abstraction aligns with the agent design framework discussed in the course,
 
 \subsection{Learning Agent Architecture}
 
-The implemented controller corresponds to a utility-based learning agent as introduced in the course. This architecture decomposes into four functional components:
+The implemented controller corresponds to a utility-based learning agent. This architecture decomposes into four functional components:
 
 \begin{itemize}
-    \item \textbf{Performance element:} a deep neural network policy (actor) outputs the control action, and a critic network evaluates its expected value.
-    \item \textbf{Learning element:} the policy and value function are updated through temporal-difference learning with mini-batch gradient descent, using past experience stored in a replay buffer.
+    \item \textbf{Performance element:} a deep neural network (DNN) policy (actor) outputs the control action, and a critic network evaluates its expected value.
+    \item \textbf{Learning element:} the policy and value function are updated through \linebreak temporal-difference learning with mini-batch gradient descent, using past experience stored in a replay buffer.
     \item \textbf{Critic:} provides feedback to the actor based on the Bellman error.
-    \item \textbf{Problem generator:} exploration is introduced via noise (Ornstein–Uhlenbeck process) to encourage policy improvement under unseen conditions.
+    \item \textbf{Problem generator:} exploration is introduced via noise (Ornstein–Uhlenbeck process~\cite{Uhlenbeck1930}) to encourage policy improvement under unseen conditions.
 \end{itemize}
 
 This structure matches the "learning agent" model from the course: an autonomous agent perceiving a dynamic environment, adapting based on feedback, and improving performance over time. The agent is not hard-coded with control laws but discovers them through interaction, generalizing across randomized references and initial states.
 
 \subsection{Network Architectures}
 
-\textbf{Actor network:}
+\begin{figure}[ht!]
+    \centering
+    \subfigure[Actor Network]{%
+        \includegraphics[width = 0.3\textwidth]{Images/NetworkArchitectureDiagram.pdf}
+    }
+    \subfigure[Critic Network]{%
+        \includegraphics[width = 0.3\textwidth]{Images/CriticArchitectureDiagram.pdf}
+    }
+    \caption{Neuronal network architectures}
+    \label{fig:NeuronalNetworkDiagram}
+\end{figure}
+
+The actor network takes the state vector $S[k]$ as input and passes it through three fully connected hidden layers, each containing 32 neurons with ReLU activation functions, as it shown in the \Cref{fig:NeuronalNetworkDiagram}.a). The output layer provides a single scalar action representing the armature voltage command applied to the DC motor. In the other hand, the critic network takes both the state vector $S[k]$ and the action $A[k]$ as inputs. It concatenates these inputs and passes them through three hidden layers with 64 neurons each, also using ReLU activation functions, as it shown in the \Cref{fig:NeuronalNetworkDiagram}.b). The output layer produces a scalar Q-value representing the expected return for the given state-action pair.
+
+This can be summarized as follows:
+
+\noindent\textbf{Actor network:}
 \begin{itemize}
     \item Three fully connected layers with 32 ReLU neurons each
     \item Output layer: scalar action (voltage command)
 \end{itemize}
 
-\textbf{Critic network:}
+\noindent\textbf{Critic network:}
 \begin{itemize}
     \item Dual input (state and action) structure
     \item Three hidden layers of 64 ReLU neurons after concatenation
@@ -233,6 +252,8 @@ This structure matches the "learning agent" model from the course: an autonomous
 \end{itemize}
 
 \subsection{Hyperparameters}
+
+The performance and stability of deep reinforcement learning algorithms depend heavily on the choice of hyperparameters. These parameters influence the learning dynamics, balance exploration with exploitation, and affect the quality and speed of convergence to an optimal policy. In this project, the hyperparameters were carefully selected based on empirical trials and established best practices from the literature to ensure robust and efficient training of both actor and critic networks. The specific hyperparameters used for training the reinforcement learning controller are listed below:
 
 \begin{itemize}
     \item Discount factor: $\gamma = 0.8$
@@ -242,54 +263,66 @@ This structure matches the "learning agent" model from the course: an autonomous
     \item Noise: Ornstein-Uhlenbeck with $\sigma = 0.3$ decaying per episode
 \end{itemize}
 
-\subsection{Training Configuration}
+\subsection{Training Configuration and Process}
 
-Training ran for 3000 episodes with up to 3000 steps each. Agents were auto-saved every 100 episodes using a custom callback. Parallel training was enabled to speed up convergence.
+The training process for the DDPG agent involved a comprehensive setup to ensure effective learning and stable convergence. Training was conducted over 3000 episodes, each comprising up to 3000 time steps, allowing the agent extensive interactions with the simulation environment to develop a robust policy. To systematically track and evaluate learning progress, the agent's state was automatically saved every 100 episodes via a custom callback function, facilitating analysis of intermediate performance and enabling model selection based on performance metrics.
+
+To enhance computational efficiency and accelerate the learning process, parallel training was employed, significantly reducing the overall training duration. \Cref{fig:TrainingProcess} depicts the evolution of the reward signal across training episodes, showing both individual episode rewards and their moving average. The smooth and steadily rising trend of average rewards demonstrates successful policy optimization and highlights the algorithm's effectiveness in progressively minimizing tracking errors through iterative interactions with the environment.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width = 0.6\textwidth]{Images/TrainingProcess.pdf}
+    \caption{Training process along the episodes.}
+    \label{fig:TrainingProcess}
+\end{figure}
 
 
 \section{Results}
 
-The performance of the trained DDPG agent was evaluated on previously unseen reference profiles, including step and ramp changes in desired angular velocity. The following observations were made:
+The performance of the trained DDPG agent was thoroughly evaluated by analyzing its capability to follow a dynamic reference angular velocity profile. Specifically, the reference angular velocity was composed of step functions changing instantaneously at $t = 0\ s$, $t = 1\ s$, and $t = 2\ s$.
 
 \subsection{Tracking Performance}
 
-The agent consistently tracked the reference angular velocity with minimal overshoot and low steady-state error. Even with randomized starting speeds and varying targets, the agent achieved stable responses.
+The DDPG agent demonstrated robust tracking behavior, accurately and swiftly adjusting its control output to follow the reference angular velocity, as illustrated in \Cref{fig:MotorSpeed}. The observed motor speed closely matched the reference profile, exhibiting minimal overshoot at transition instants and achieving low steady-state errors. This indicates the agent successfully generalized its learned policy to manage rapid setpoint changes, showcasing strong transient performance and consistent steady-state accuracy.
+
+Additionally, despite the randomized initial conditions, the agent consistently stabilized the motor's speed, reflecting effective training and adequate exploration during the learning phase. These results highlight the strength of reinforcement learning in handling nonlinear dynamics and uncertainties inherent to DC motor systems.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width = 0.8\textwidth]{Images/MotorSpeed.pdf}
+    \caption{Motor speed tracking performance.}
+    \label{fig:MotorSpeed}
+\end{figure}
 
 \subsection{Control Behavior}
 
-The applied control voltage $V_a(t)$ was smooth and bounded within the physical range of $[0, 220]$ V, exhibiting gradual changes even in response to steep velocity transitions.
+The control voltage $V_a(t)$ applied by the DDPG agent remained smooth and was reliably confined within the permissible operational bounds of $[0, 220]\ V$, as seen in \Cref{fig:ArmatureVoltage}. The gradual transitions in voltage, even during sharp changes in reference velocity, demonstrate that the learned policy effectively avoided aggressive or erratic control actions, thus preventing potential mechanical stress and increasing the longevity and reliability of the motor system. This smooth behavior is advantageous, indicating that the agent effectively balanced rapid responsiveness and cautious voltage control, mitigating potential actuator saturation and instability issues.
 
-\subsection{Comparison to Classical Control}
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width = 0.8\textwidth]{Images/ArmatureVoltage.pdf}
+    \caption{Armature voltage applied by the RL controller.}
+    \label{fig:ArmatureVoltage}
+\end{figure}
 
-A comparison with a tuned PI controller demonstrated that the RL controller had:
-\begin{itemize}
-    \item Faster settling time
-    \item Lower steady-state error
-    \item Smoother control action
-\end{itemize}
+\subsection{Reward Curve}
 
-\subsection{Evaluation Metrics}
-The table below summarizes average tracking error over 5 test scenarios:
+The reward curve, presented in \Cref{fig:Reward}, illustrates a clear and steady increase throughout the training process, signaling consistent improvement in the agent’s ability to minimize tracking error. The progressive growth of reward values over episodes confirms that the DDPG algorithm successfully optimized the policy to minimize deviation from the desired velocity profile. The diminishing magnitude of negative rewards suggests that the agent steadily improved its policy, reducing the average tracking error significantly by the end of training. The smooth convergence pattern further emphasizes the stability and robustness of the reinforcement learning framework adopted in this project.
 
-\begin{table}[h!]
-\centering
-\begin{tabular}{|l|c|}
-\hline
-\textbf{Controller} & \textbf{Mean Absolute Error [rad/s]} \\
-\hline
-PI Controller & 3.28 \\
-RL Controller (DDPG) & 2.04 \\
-\hline
-\end{tabular}
-\caption{Performance comparison between classical and RL-based control}
-\end{table}
-
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width = 0.8\textwidth]{Images/Reward.pdf}
+    \caption{Reward curve during the simulation.}
+    \label{fig:Reward}
+\end{figure}
 
 \section{Conclusion}
 
-In this report, the application of machine learning techniques to model and control a DC motor was explored. The mathematical model of the DC motor, including its electrical and mechanical components was presented. Also, it was discussed the Laplace transform of the DC motor model and its block diagram representation.
+In this report, it was demonstrated that the DDPG algorithm is an effective and robust method for controlling DC motors in dynamic and uncertain conditions. The trained agent consistently exhibited accurate tracking performance with minimal overshoot and low steady-state error, even under varying reference velocities and randomized initial conditions. Furthermore, it was observed that the applied control voltages were smooth and consistently bounded within practical operational limits, ensuring mechanical stability and reliability.
 
-Furthermore, we have formulated the problem of controlling the DC motor as a reinforcement learning problem and applied the deep deterministic policy gradient (DDPG) algorithm to learn the optimal control policy. The results show that the DDPG algorithm can effectively learn to control the DC motor and achieve the desired angular velocity.
+The reward curve clearly illustrated progressive improvement, confirming that the agent successfully learned an optimal control policy through RL. This smooth convergence pattern underscored the stability and effectiveness of the chosen training methodology and hyperparameter settings.
+
+Overall, the findings from this project provide strong support for the adoption of RL techniques in practical control scenarios, highlighting their advantages over traditional methods in terms of adaptability, robustness, and overall performance.
 
 \nocite{*}
 \bibliographystyle{ieeetr}
