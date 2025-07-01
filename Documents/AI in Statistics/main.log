@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.5.13)  11 JUN 2025 14:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.5.13)  11 JUN 2025 16:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -528,46 +528,52 @@ pdfTeX warning: pdflatex (file ./Images/CriticArchitectureDiagram.pdf): PDF incl
 File: Images/TrainingProcess.pdf Graphic file (type pdf)
 <use Images/TrainingProcess.pdf>
 Package pdftex.def Info: Images/TrainingProcess.pdf  used on input line 307.
-(pdftex.def)             Requested size: 411.14528pt x 297.5712pt.
+(pdftex.def)             Requested size: 483.69687pt x 350.07974pt.
+<Images/MatlabSchematic.png, id=244, 1660.70438pt x 578.16pt>
+File: Images/MatlabSchematic.png Graphic file (type png)
+<use Images/MatlabSchematic.png>
+Package pdftex.def Info: Images/MatlabSchematic.png  used on input line 314.
+(pdftex.def)             Requested size: 483.69687pt x 168.39433pt.
 
 
 [9]
-<Images/MotorSpeed.pdf, id=250, 779.91376pt x 295.1025pt>
+
+[10 <./Images/TrainingProcess.pdf> <./Images/MatlabSchematic.png>]
+<Images/MotorSpeed.pdf, id=284, 779.91376pt x 295.1025pt>
 File: Images/MotorSpeed.pdf Graphic file (type pdf)
 <use Images/MotorSpeed.pdf>
-Package pdftex.def Info: Images/MotorSpeed.pdf  used on input line 326.
+Package pdftex.def Info: Images/MotorSpeed.pdf  used on input line 333.
 (pdftex.def)             Requested size: 411.14528pt x 155.56602pt.
-
-
-[10 <./Images/TrainingProcess.pdf> <./Images/MotorSpeed.pdf>]
-<Images/AbsError.pdf, id=306, 315.1775pt x 201.75375pt>
+<Images/AbsError.pdf, id=285, 315.1775pt x 201.75375pt>
 File: Images/AbsError.pdf Graphic file (type pdf)
 <use Images/AbsError.pdf>
-Package pdftex.def Info: Images/AbsError.pdf  used on input line 338.
+Package pdftex.def Info: Images/AbsError.pdf  used on input line 345.
 (pdftex.def)             Requested size: 193.47578pt x 123.84846pt.
-<Images/AbsError_Zoom.pdf, id=307, 305.14pt x 201.75375pt>
+<Images/AbsError_Zoom.pdf, id=286, 305.14pt x 201.75375pt>
 File: Images/AbsError_Zoom.pdf Graphic file (type pdf)
 <use Images/AbsError_Zoom.pdf>
-Package pdftex.def Info: Images/AbsError_Zoom.pdf  used on input line 339.
+Package pdftex.def Info: Images/AbsError_Zoom.pdf  used on input line 346.
 (pdftex.def)             Requested size: 193.47578pt x 127.92749pt.
-<Images/ArmatureVoltage.pdf, id=311, 773.89125pt x 295.1025pt>
+
+
+[11 <./Images/MotorSpeed.pdf> <./Images/AbsError.pdf> <./Images/AbsError_Zoom.pdf>]
+<Images/ArmatureVoltage.pdf, id=360, 773.89125pt x 295.1025pt>
 File: Images/ArmatureVoltage.pdf Graphic file (type pdf)
 <use Images/ArmatureVoltage.pdf>
-Package pdftex.def Info: Images/ArmatureVoltage.pdf  used on input line 352.
+Package pdftex.def Info: Images/ArmatureVoltage.pdf  used on input line 359.
 (pdftex.def)             Requested size: 411.14528pt x 156.78181pt.
-
-
-[11 <./Images/AbsError.pdf> <./Images/AbsError_Zoom.pdf> <./Images/ArmatureVoltage.pdf>]
-<Images/Reward.pdf, id=376, 776.9025pt x 295.1025pt>
+<Images/Reward.pdf, id=362, 776.9025pt x 295.1025pt>
 File: Images/Reward.pdf Graphic file (type pdf)
 <use Images/Reward.pdf>
-Package pdftex.def Info: Images/Reward.pdf  used on input line 363.
+Package pdftex.def Info: Images/Reward.pdf  used on input line 370.
 (pdftex.def)             Requested size: 411.14528pt x 156.17392pt.
 
 
-[12 <./Images/Reward.pdf>] (main.bbl))
+[12 <./Images/ArmatureVoltage.pdf> <./Images/Reward.pdf>]
 
-[13
+[13] (main.bbl))
+
+[14
 
 ] (main.aux)
  ***********
@@ -578,17 +584,17 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 8ACF5A9854FBA2E446A1D7000BA8924B;3276.
  ) 
 Here is how much of TeX's memory you used:
- 14465 strings out of 469941
- 241169 string characters out of 5469914
+ 14476 strings out of 469941
+ 241470 string characters out of 5469914
  652995 words of memory out of 5000000
- 40999 multiletter control sequences out of 15000+600000
+ 41008 multiletter control sequences out of 15000+600000
  666836 words of font info for 125 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  74i,13n,82p,892b,512s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Dave\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmr.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmri.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplbi8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/Dave/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (13 pages, 618620 bytes).
+Output written on main.pdf (14 pages, 691543 bytes).
 PDF statistics:
- 485 PDF objects out of 1000 (max. 8388607)
- 75 named destinations out of 1000 (max. 500000)
- 231 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 494 PDF objects out of 1000 (max. 8388607)
+ 77 named destinations out of 1000 (max. 500000)
+ 236 words of extra memory for PDF output out of 10000 (max. 10000000)
 

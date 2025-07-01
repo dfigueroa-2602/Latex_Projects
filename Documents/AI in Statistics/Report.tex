@@ -304,12 +304,19 @@ To enhance computational efficiency and accelerate the learning process, paralle
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width = 0.85\textwidth]{Images/TrainingProcess.pdf}
+    \includegraphics[width = \textwidth]{Images/TrainingProcess.pdf}
     \caption{Training process along the episodes.}
     \label{fig:TrainingProcess}
 \end{figure}
 
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width = \textwidth]{Images/MatlabSchematic.png}
+    \caption{Schematic of the \textsc{Matlab Simulink} model used for training the DDPG agent.}
+    \label{fig:MatlabSchematic}
+\end{figure}
 
+The training was conducted using a custom \textsc{Matlab Simulink} model, as shown in \Cref{fig:MatlabSchematic}. This model simulates the DC motor dynamics and provides the necessary environment for the reinforcement learning agent to interact with. The model includes blocks for the reference speed generation, and reward calculation. Also, it includes the RL agent block, which will be trained to control the armature voltage applied to the motor.
 
 \section{Results}
 

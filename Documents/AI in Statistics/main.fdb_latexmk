@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1749643522.58707 "main.aux" "main.bbl" "main" 1749643524.00287 0
+["bibtex main"] 1749653087.67467 "main.aux" "main.bbl" "main" 1749653088.91628 0
   "./bib.bib" 1749641350 4240 75b1f0900dbb9b3b2ec3c03e4945bb5b ""
   "C:/Users/Dave/AppData/Local/Programs/MiKTeX/bibtex/bst/bibtex/ieeetr.bst" 1291864344 18361 1a00e58565e7f19bf2b3e1bfb82254ae ""
-  "main.aux" 1749643523 10525 dad4d6616de60d7e093080b094e4ae25 "pdflatex"
+  "main.aux" 1749653088 11067 b94c31fab71a203a67a67c6651f0e5ac "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1749643522.76192 "c:/Users/Dave/Documents/git/Latex_Projects/Documents/AI in Statistics/main.tex" "main.pdf" "main" 1749643524.00319 0
+["pdflatex"] 1749653087.8448 "c:/Users/Dave/Documents/git/Latex_Projects/Documents/AI in Statistics/main.tex" "main.pdf" "main" 1749653088.9166 0
   "C:/Users/Dave/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1749635358 123198 3bbd8409905bfb5918bb33e6a0462096 ""
   "C:/Users/Dave/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ectt1200.pk" 1749635239 24152 4763e48fae7c66e09ff9818218fb8ea9 ""
   "C:/Users/Dave/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1747149064 13157157 dc7e5788aae9820ed782ce41242cd78f ""
@@ -132,6 +132,7 @@
   "Images/AbsError_Zoom.pdf" 1749643220 35001 86ea3e993169ed6adc5b3be5815adc56 ""
   "Images/ArmatureVoltage.pdf" 1749630342 39969 d1d22d2a887ee8949a3ef19046f15cc9 ""
   "Images/CriticArchitectureDiagram.pdf" 1749627454 31477 2f8f8b79402303c46bf08f8b0bcfc279 ""
+  "Images/MatlabSchematic.png" 1749653066 90175 6926ee71f3d8edb0cab12b65b2455b60 ""
   "Images/Motor.pdf" 1749565614 8780 b2aa5e48a48cf48f736c083df23329b3 ""
   "Images/MotorDynamics.pdf" 1749571516 16949 fbee104de97ca4f0e1c0000cf35137ae ""
   "Images/MotorDynamics_Torque.pdf" 1749571740 17327 5b485b263ea11e204bc59d7075bdb606 ""
@@ -143,11 +144,11 @@
   "Images/Sampling.pdf" 1749625434 5120 3c6f075ed40aab21f7d6aea3fd9e22c1 ""
   "Images/TrainingProcess.pdf" 1749629864 77628 6c97dc819f44a62e295a6ef0efcacfe6 ""
   "Packages.tex" 1749635367 426 0733cfe34009492bbaf3ee9e780bb483 ""
-  "Report.tex" 1749643521 26268 f452c57dc6c620877a2a185da78d8148 ""
+  "Report.tex" 1749653086 26967 43fc03f37b5d1ac0e6cf0e14bf05fc37 ""
   "c:/Users/Dave/Documents/git/Latex_Projects/Documents/AI in Statistics/main.tex" 1749573663 130 fec267c5c8b043a281484b842e6fa223 ""
-  "main.aux" 1749643523 10525 dad4d6616de60d7e093080b094e4ae25 "pdflatex"
-  "main.bbl" 1749643522 939 ca4c87fd02ba3bff77aa25c87cf75c3b "bibtex main"
-  "main.out" 1749643523 3276 8acf5a9854fba2e446a1d7000ba8924b "pdflatex"
+  "main.aux" 1749653088 11067 b94c31fab71a203a67a67c6651f0e5ac "pdflatex"
+  "main.bbl" 1749653087 939 ca4c87fd02ba3bff77aa25c87cf75c3b "bibtex main"
+  "main.out" 1749653088 3276 8acf5a9854fba2e446a1d7000ba8924b "pdflatex"
   "main.tex" 1749573663 130 fec267c5c8b043a281484b842e6fa223 ""
   (generated)
   "main.aux"
