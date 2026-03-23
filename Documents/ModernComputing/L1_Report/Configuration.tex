@@ -1,0 +1,69 @@
+%!TeX root = main.tex
+\topmargin -20truemm
+\textwidth 180truemm
+\textheight 235truemm
+\columnsep 6truemm
+\evensidemargin -5truemm
+\oddsidemargin -5truemm
+
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{fadings}
+\usetikzlibrary{patterns}
+\usetikzlibrary{shadows.blur}
+\usetikzlibrary{shapes}
+
+\makeatletter
+\providecommand{\professor}[1]{
+    \apptocmd{\@title}{\par \vskip 0.15em {\itshape \large #1 \par}}{}{}
+}
+\providecommand{\lecture}[1]{
+    \apptocmd{\@title}{:~{\bfseries \Huge #1 \par}}{}{}
+}
+
+\def\@maketitle{
+    \newpage
+    {\hrule \@width\columnwidth height 3pt \par}
+    \begin{flushleft}
+        \let \footnote \thanks
+        \vskip 0.5em
+        {\Huge \sffamily \@title \par}
+        \vskip 0.5em
+    \end{flushleft}
+    {\hrule \@width\columnwidth height 3pt \par}
+    \begin{flushright}
+        {\large \sffamily \@author \par}
+    \end{flushright}
+    }
+\makeatother
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\definecolor{termuser}{RGB}{152,195,121}
+\definecolor{termpath}{RGB}{97,175,239}
+\definecolor{termprompt}{RGB}{229,192,123}
+
+\lstdefinestyle{linux}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,            
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showtabs=false,                  
+    tabsize=2,
+    frame=shadowbox,
+    framexleftmargin=5mm,
+    rulesepcolor=\color{black}
+}
+
+\title{Laboratory 1}
+\lecture{Modern Computing Technologies}
+\professor{prof. Gabriel Wlazłowski and prof. Daniel Kikoła}
+\author{Dave Figueroa}

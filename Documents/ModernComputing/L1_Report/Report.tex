@@ -1,0 +1,118 @@
+%!TeX root = main.tex
+
+The variables $v_1$ to $v_5$ were read from the files \verb|var1.dat| to \verb|var5.dat|. Each variable contains 134217728 elements.
+
+Using these variables, the derived variables $v_6$ to $v_{10}$ were defined as:
+\begin{equation}
+    \begin{aligned}
+        v_6     &= \sin(v_1) + \cos(v_2)\\
+        v_7     &= e^{v_3} + e^{-v_4}\\
+        v_8     &= \sin(v_1)\cos(v_2) + \cos(v_3)\sin(v_4)\\
+        v_9     &= \sqrt{v_2^2 + v_3^2}\\
+        v_{10}  &= \sqrt[3]{v_5}
+    \end{aligned}
+\end{equation}
+
+Once all variables had been defined, the covariance matrix was computed. To do so, the \texttt{C} source code was compiled on the \verb|dwarf| system using the following terminal commands:
+\begin{itemize}
+    \item \verb|-O3|: enables a high level of compiler optimization to improve execution performance.
+    \item \verb|-lm|: links the mathematical library required for functions such as \verb|sin|, \verb|cos|, \verb|exp|, and \verb|sqrt|.
+\end{itemize}
+The executable was then run using \verb|./covariance|, producing the following output:
+\lstset{
+    style = linux
+}
+\begin{lstlisting}[language = sh]
+[ops015@node2072 Lab-Session1]$ ./covariance 
+# READING DATA: `/home2/archive/MCT-2026/lab1/var1.dat`...
+# READING DATA: `/home2/archive/MCT-2026/lab1/var2.dat`...
+# READING DATA: `/home2/archive/MCT-2026/lab1/var3.dat`...
+# READING DATA: `/home2/archive/MCT-2026/lab1/var4.dat`...
+# READING DATA: `/home2/archive/MCT-2026/lab1/var5.dat`...
+# READ TIME: 27.318970 sec
+# REMAINING VALUES COMPUTING TIME: 322.112765 sec
+# MEAN VALUES COMPUTING TIME: 1080.477149 sec
+# COV MATRIX COMPUTING TIME: 4058.163867 sec
+cov( 1, 1)=      0.33330407
+cov( 2, 1)=      0.33330627
+cov( 2, 2)=        0.354141
+cov( 3, 1)=       0.9999136
+cov( 3, 2)=       1.0415912
+cov( 3, 3)=       3.4164322
+cov( 4, 1)=     0.083315582
+cov( 4, 2)=     0.083314822
+cov( 4, 3)=      0.24996499
+cov( 4, 4)=      0.11665102
+cov( 5, 1)=      0.99991222
+cov( 5, 2)=      0.99991882
+cov( 5, 3)=       2.9997408
+cov( 5, 4)=      0.24994675
+cov( 5, 5)=       2.9997367
+cov( 6, 1)=      0.22741816
+cov( 6, 2)=      0.22311045
+cov( 6, 3)=      0.67362109
+cov( 6, 4)=     0.011154728
+cov( 6, 5)=      0.68225449
+cov( 6, 6)=      0.17943495
+cov( 7, 1)=       4.4811931
+cov( 7, 2)=       4.7587534
+cov( 7, 3)=       16.109993
+cov( 7, 4)=       2.7202396
+cov( 7, 5)=       13.443579
+cov( 7, 6)=       2.1790936
+cov( 7, 7)=       146.11918
+cov( 8, 1)=      0.13701535
+cov( 8, 2)=      0.12998218
+cov( 8, 3)=      0.40114765
+cov( 8, 4)=     -0.04420721
+cov( 8, 5)=      0.41104604
+cov( 8, 6)=      0.13412504
+cov( 8, 7)=      0.23848724
+cov( 8, 8)=      0.15351441
+cov( 9, 1)=      0.26130321
+cov( 9, 2)=      0.26987497
+cov( 9, 3)=      0.84780182
+cov( 9, 4)=      0.31189547
+cov( 9, 5)=      0.78390963
+cov( 9, 6)=     0.058905463
+cov( 9, 7)=       9.1730406
+cov( 9, 8)=     -0.12185077
+cov( 9, 9)=       1.1349119
+cov(10, 1)=      0.61807095
+cov(10, 2)=      0.61807478
+cov(10, 3)=       1.8542035
+cov(10, 4)=      0.15449216
+cov(10, 5)=       1.8542129
+cov(10, 6)=      0.42628017
+cov(10, 7)=       7.7737301
+cov(10, 8)=      0.28316258
+cov(10, 9)=      0.52532319
+cov(10,10)=       1.2480151
+\end{lstlisting}
+
+\clearpage
+
+The complete covariance matrix, obtained by symmetry from the lower triangular entries and rounded to two decimal places, is given by
+\begin{equation}
+    \mathbf{C}=
+    \begin{bmatrix}
+        0.33 & 0.33 & 1.00 & 0.08 & 1.00 & 0.23 & 4.48 & 0.14 & 0.26 & 0.62 \\
+        0.33 & 0.35 & 1.04 & 0.08 & 1.00 & 0.22 & 4.76 & 0.13 & 0.27 & 0.62 \\
+        1.00 & 1.04 & 3.42 & 0.25 & 3.00 & 0.67 & 16.11 & 0.40 & 0.85 & 1.85 \\
+        0.08 & 0.08 & 0.25 & 0.12 & 0.25 & 0.01 & 2.72 & -0.04 & 0.31 & 0.15 \\
+        1.00 & 1.00 & 3.00 & 0.25 & 3.00 & 0.68 & 13.44 & 0.41 & 0.78 & 1.85 \\
+        0.23 & 0.22 & 0.67 & 0.01 & 0.68 & 0.18 & 2.18 & 0.13 & 0.06 & 0.43 \\
+        4.48 & 4.76 & 16.11 & 2.72 & 13.44 & 2.18 & 146.12 & 0.24 & 9.17 & 7.77 \\
+        0.14 & 0.13 & 0.40 & -0.04 & 0.41 & 0.13 & 0.24 & 0.15 & -0.12 & 0.28 \\
+        0.26 & 0.27 & 0.85 & 0.31 & 0.78 & 0.06 & 9.17 & -0.12 & 1.13 & 0.53 \\
+        0.62 & 0.62 & 1.85 & 0.15 & 1.85 & 0.43 & 7.77 & 0.28 & 0.53 & 1.25
+    \end{bmatrix}
+\end{equation}
+
+The time required by the program for each stage was approximately:
+\begin{itemize}
+    \item reading the variable files: 27~s,
+    \item computing the derived variables: 5~min~22~s,
+    \item computing the mean values: 18~min,
+    \item computing the covariance matrix: 1~h~7~min~38~s.
+\end{itemize}
