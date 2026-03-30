@@ -1,6 +1,77 @@
 %!TeX root = main.tex
+
+The objective of this laboratory session is to compare different thread configurations in order to accelerate the computation of the covariance matrix for the given data.
+
+In the previous laboratory session, it was observed that, using sequential computation without parallelisation, the execution times for the covariance matrix calculation were:
+\begin{itemize}
+    \item computing the derived variables: 5~min~22~s,
+    \item computing the mean values: 18~min,
+    \item computing the covariance matrix: 1~h~7~min~38~s.
+\end{itemize}
+
+The \texttt{OpenMP} library is used to parallelise computations that could be take a long time to execute, for example, optimisation problem, matrix operations, etc. In this case, the library is used to speed up the calculation of the derived variables, mean values for each variable, and the covariance matrix.
+
+To use this directive, the code was modified to include the \texttt{omp.h} header, which provides the necessary functions and types for parallel programming. Among them, the \linebreak\texttt{omp\_set\_num\_threads} function is used to specify the number of threads to be used in the parallel regions, and the \texttt{omp\_parallel} directive is used to define a parallel region, where the code inside it will be executed by multiple threads concurrently.
+
+For example, to calculate the mean values for each variable, the following code snippet was used:
+\begin{minted}
+    [
+        fontsize=\small,
+        baselinestretch=0.85,
+        frame=lines
+    ]{c}
+    #pragma omp parallel shared(mean,m,final_var) private(i,j)
+    {
+        #pragma omp for schedule(static) 
+        for(j = 0; j < m; j++)
+        {
+            mean[j] = 0.0;
+            for(i = 0; i < NELEMENTS; i++)
+            {
+                mean[j] += final_var[j][i];
+            }
+            mean[j] /= NELEMENTS;
+        }
+    }    
+\end{minted}
+where the clause \texttt{shared} is used to specify the variables that are shared among all threads, while the clause \texttt{private} is used to specify the variables that are private to each thread. The \texttt{omp\_for} directive is used to parallelise the \texttt{for} loop, and the \texttt{schedule(static)} clause is used to specify that the iterations of the loop should be divided into equal-sized chunks and assigned to threads in a round-robin fashion.
+
+After implementing the parallelisation using \texttt{OpenMP}, the execution times for different numbers of threads were measured, and the results are the following:
+
+\begin{table}[ht!]
+    \centering
+    \begin{tabularx}{\textwidth}{
+        | >{\centering\arraybackslash}X
+        | >{\centering\arraybackslash}X
+        | >{\centering\arraybackslash}X
+        | >{\centering\arraybackslash}X |
+    }
+        \hline
+        \textbf{Number of Threads} & \textbf{Derived Variables} [s] & \textbf{Mean Values} [s] & \textbf{Cov. Matrix} [s]\\
+        \hline
+        1 & 62.82 &	2.26 &	16.12\\
+        2 &	31.64 &	1.08 &  9.42\\
+        4 &	12.82 &	0.72 &	6.51\\
+        8 &	6.74  &	0.53 &	5.34\\
+        16&	3.57  &	0.48 &	3.33\\
+        20&	3.84  &	0.51 &	3.13\\
+        30&	2.80  &	0.46 &	3.60\\
+        40&	2.65  &	0.52 & 	3.59\\
+        \hline
+    \end{tabularx}
+    \caption{Execution times for different numbers of threads.}
+    \label{tab:Ex_times}
+\end{table}
+
+As it can be seen, the time required to compute the derived variables decreased from 62.82~s for one thread to 2.65~s for 40 threads, while the covariance matrix computation was reduced from 16.12~s to a minimum of 3.13~s at 20 threads.
+
+The corresponding comparison plot is presented in \Cref{fig:Ex_times_graph}.
+
 \begin{figure}[ht!]
     \centering
     \input{Images/Ex_Time.tex}
-    \caption{Execution time graph.}
+    \caption{Execution time as a function of the number of threads.}
+    \label{fig:Ex_times_graph}
 \end{figure}
+
+From the obtained results, it can be concluded that the use of \texttt{OpenMP} significantly reduces the execution time of the covariance matrix computation. The largest improvement is observed when increasing the number of threads from 1 to 16--20. Beyond that point, the performance gain becomes smaller, and for some stages the execution time slightly increases. This indicates that the parallel implementation is effective, but its scalability is limited by factors such as parallel overhead and memory access constraints.
