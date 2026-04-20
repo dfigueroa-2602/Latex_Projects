@@ -1,0 +1,33 @@
+\begin{tikzpicture}
+    \pgfplotsset{
+        set layers,
+        every axis legend/.style={
+            cells = {anchor = east},% Centered entries
+            anchor = north east,
+            font = \footnotesize,
+            shape = rectangle,
+            fill = white,
+            draw = black,
+            at = {(1,1)}
+            }
+    }
+    \begin{axis}[
+        xlabel = {Number of threads [-]},
+        ylabel = {Time [s]},
+        ymin = 0,
+        ymax = 30,
+        xmin = 1,
+        xmax = 80,
+        symbolic x coords = {1,2,4,8,16,20,30,40,80},
+        xtick = data,
+        grid = both
+        ]
+        \addplot[red, mark=x, mark size=4pt] table[x=N_Threads, y=Read_Time] {Data/MPI_CovMatrix.dat};
+        \label{read_MPI}
+        \addplot[green, mark=x, mark size=4pt] table[x=N_Threads, y=Read_Time] {Data/MPI_io_CovMatrix.dat};
+        \label{read_MPI_io}
+
+        \addlegendimage{/pgfplots/refstyle=read_MPI}\addlegendentry{MPI}
+        \addlegendimage{/pgfplots/refstyle=read_MPI_io}\addlegendentry{MPI i$/$o}
+    \end{axis}
+\end{tikzpicture}
