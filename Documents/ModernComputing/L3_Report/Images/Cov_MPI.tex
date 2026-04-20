@@ -1,0 +1,36 @@
+\begin{tikzpicture}
+    \pgfplotsset{
+        set layers,
+        every axis legend/.style={
+            cells = {anchor = east},% Centered entries
+            anchor = north east,
+            font = \footnotesize,
+            shape = rectangle,
+            fill = white,
+            draw = black,
+            at = {(1,1)}
+            }
+    }
+    \begin{axis}[
+        xlabel = {Number of threads [-]},
+        ylabel = {Time [s]},
+        ymin = 0,
+        ymax = 65,
+        xmin = 1,
+        xmax = 80,
+        symbolic x coords = {1,2,4,8,16,20,30,40,80},
+        xtick = data,
+        grid = both
+        ]
+        \addplot[red, mark=x, mark size=4pt] table[x=N_Threads, y=Remaining_Values] {Data/MPI_CovMatrix.dat};
+        \label{Remval}
+        \addplot[blue, mark=x, mark size=4pt] table[x=N_Threads, y=Mean_Values] {Data/MPI_CovMatrix.dat};
+        \label{Meanval}
+        \addplot[green, mark=x, mark size=4pt] table[x=N_Threads, y=Cov_Matrix] {Data/MPI_CovMatrix.dat};
+        \label{Covmat}
+
+        \addlegendimage{/pgfplots/refstyle=Remval}\addlegendentry{Missing Values}
+        \addlegendimage{/pgfplots/refstyle=Meanval}\addlegendentry{Mean Values}
+        \addlegendimage{/pgfplots/refstyle=Covmat}\addlegendentry{Covariance Matrix}
+    \end{axis}
+\end{tikzpicture}

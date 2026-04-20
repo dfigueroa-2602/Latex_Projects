@@ -1,0 +1,91 @@
+%!TeX root = main.tex
+
+The objective of this laboratory session is to accelerate the computation of the covariance matrix, but using the (Message Passing Interface) \texttt{MPI} library. The \texttt{MPI} library is a standard for parallel programming that allows processes to communicate with each other by sending and receiving messages. It is widely used in high-performance computing applications, where the computational workload can be distributed across multiple processors or nodes.
+
+In the previous laboratory session, it was observed that, after implementing the parallelisation using \texttt{OpenMP}, the execution times for different numbers of threads were decreasing, as it was shown in \Cref{tab:Ex_times_openMP}.
+
+\begin{table}[ht!]
+    \centering
+    \begin{tabularx}{\textwidth}{
+        | >{\centering\arraybackslash}X
+        | >{\centering\arraybackslash}X
+        | >{\centering\arraybackslash}X
+        | >{\centering\arraybackslash}X |
+    }
+        \hline
+        \textbf{Number of Threads} & \textbf{Derived Variables} [s] & \textbf{Mean Values} [s] & \textbf{Cov. Matrix} [s]\\
+        \hline
+        1 & 62.82 &	2.26 &	16.12\\
+        2 &	31.64 &	1.08 &  9.42\\
+        4 &	12.82 &	0.72 &	6.51\\
+        8 &	6.74  &	0.53 &	5.34\\
+        16&	3.57  &	0.48 &	3.33\\
+        20&	3.84  &	0.51 &	3.13\\
+        30&	2.80  &	0.46 &	3.60\\
+        40&	2.65  &	0.52 & 	3.59\\
+        \hline
+    \end{tabularx}
+    \caption{Execution times for different numbers of threads using \texttt{openMP}.}
+    \label{tab:Ex_times_openMP}
+\end{table}
+
+In the \Cref{fig:Cov_openMP_graph}, the execution times for the calculation of the covariance matrix are plotted as a function of the number of threads.
+
+\begin{figure}[ht!]
+    \centering
+    \input{Images/Cov_openMP.tex}
+    \caption{Execution time as a function of the number of threads.}
+    \label{fig:Cov_openMP_graph}
+\end{figure}
+
+Thanks to the parallelisation using \texttt{MPI}, the execution times for the calculation of the covariance matrix were significantly reduced, as it can be observed in \Cref{tab:Ex_times_MPI}.
+
+\begin{table}[ht!]
+    \centering
+    \begin{tabularx}{\textwidth}{
+        | >{\centering\arraybackslash}X
+        | >{\centering\arraybackslash}X
+        | >{\centering\arraybackslash}X
+        | >{\centering\arraybackslash}X |
+    }
+        \hline
+        \textbf{Number of Threads} & \textbf{Derived Variables} [s] & \textbf{Mean Values} [s] & \textbf{Cov. Matrix} [s]\\
+        \hline
+        1 & 62.38 &	1.96 & 12.79\\
+        2 &	21.79 &	0.76 & 5.35 \\
+        4 &	10.18 &	0.35 & 2.72 \\
+        8 &	5.45  &	0.20 & 1.76 \\
+        16&	2.79  &	0.14 & 1.40 \\
+        20&	2.10  &	0.13 & 1.38 \\
+        30&	2.10  &	0.13 & 1.35 \\
+        40&	1.56  &	1.06 & 2.03 \\
+        80&	0.87  &	1.00 & 2.54 \\
+        \hline
+    \end{tabularx}
+    \caption{Execution times for different numbers of threads using \texttt{MPI}.}
+    \label{tab:Ex_times_MPI}
+\end{table}
+
+In the \Cref{fig:Cov_MPI_graph}, the execution times for the calculation of the covariance matrix are plotted as a function of the number of threads.
+\begin{figure}[ht!]
+    \centering
+    \input{Images/Cov_MPI.tex}
+    \caption{Execution time as a function of the number of threads.}
+    \label{fig:Cov_MPI_graph}
+\end{figure}
+
+A comparison between the execution times for the calculation of the covariance matrix using \texttt{openMP} and \texttt{MPI} is shown in \Cref{fig:Cov_comp_graph}.
+
+\begin{figure}[ht!]
+    \centering
+    \input{Images/Cov_comp.tex}
+    \caption{Comparison of execution times for the calculation of the covariance matrix using \texttt{openMP} and \texttt{MPI}.}
+    \label{fig:Cov_comp_graph}
+\end{figure}
+
+\begin{figure}[ht!]
+    \centering
+    \input{Images/Read_comp.tex}
+    \caption{Comparison of read times \texttt{MPI} and \texttt{MPI i/o}.}
+    \label{fig:Read_comp_graph}
+\end{figure}

@@ -1,0 +1,33 @@
+\begin{tikzpicture}
+    \pgfplotsset{
+        set layers,
+        every axis legend/.style={
+            cells = {anchor = east},% Centered entries
+            anchor = north east,
+            font = \footnotesize,
+            shape = rectangle,
+            fill = white,
+            draw = black,
+            at = {(1,1)}
+            }
+    }
+    \begin{axis}[
+        xlabel = {Number of threads [-]},
+        ylabel = {Time [s]},
+        ymin = 0,
+        ymax = 20,
+        xmin = 1,
+        xmax = 40,
+        symbolic x coords = {1,2,4,8,16,20,30,40,80},
+        xtick = data,
+        grid = both
+        ]
+        \addplot[red, mark=x, mark size=4pt] table[x=N_Threads, y=Cov_Matrix] {Data/openMP_CovMatrix.dat};
+        \label{covmat_openMP}
+        \addplot[green, mark=x, mark size=4pt] table[x=N_Threads, y=Cov_Matrix] {Data/MPI_CovMatrix.dat};
+        \label{Covmat_MPI}
+
+        \addlegendimage{/pgfplots/refstyle=covmat_openMP}\addlegendentry{openMP}
+        \addlegendimage{/pgfplots/refstyle=Covmat_MPI}\addlegendentry{MPI}
+    \end{axis}
+\end{tikzpicture}
