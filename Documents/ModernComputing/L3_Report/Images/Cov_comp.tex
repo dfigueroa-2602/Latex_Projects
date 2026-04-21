@@ -12,7 +12,7 @@
             }
     }
     \begin{axis}[
-        xlabel = {Number of threads [-]},
+        xlabel = {Number of processes [-]},
         ylabel = {Time [s]},
         ymin = 0,
         ymax = 20,
@@ -23,11 +23,41 @@
         grid = both
         ]
         \addplot[red, mark=x, mark size=4pt] table[x=N_Threads, y=Cov_Matrix] {Data/openMP_CovMatrix.dat};
-        \label{covmat_openMP}
-        \addplot[green, mark=x, mark size=4pt] table[x=N_Threads, y=Cov_Matrix] {Data/MPI_CovMatrix.dat};
+        \label{covmat_openMP}        
+
+        % MPI data (threads 1–40 only)
+        \addplot[blue, mark=x, mark size=4pt] table[x=N_Threads, y=Cov_Matrix] {Data/MPI_CovMatrix.dat};
         \label{Covmat_MPI}
+
+        \addplot[red, dashed, thick]
+            coordinates {
+                (1,  16.116751)
+                (2,  8.058376)
+                (4,  4.029188)
+                (8,  2.014594)
+                (16, 1.007297)
+                (20, 0.805838)
+                (30, 0.537225)
+                (40, 0.402919)
+            };
+        \label{is_openMP}
+
+        \addplot[blue, dashed, thick]
+            coordinates {
+                (1,  14.096701)
+                (2,  7.048351)
+                (4,  3.524175)
+                (8,  1.762088)
+                (16, 0.881044)
+                (20, 0.704835)
+                (30, 0.467223)
+                (40, 0.351611)
+            };
+        \label{is_MPI}
 
         \addlegendimage{/pgfplots/refstyle=covmat_openMP}\addlegendentry{openMP}
         \addlegendimage{/pgfplots/refstyle=Covmat_MPI}\addlegendentry{MPI}
+        \addlegendimage{/pgfplots/refstyle=is_openMP}\addlegendentry{scaled openMP}
+        \addlegendimage{/pgfplots/refstyle=is_MPI}\addlegendentry{scaled MPI}
     \end{axis}
 \end{tikzpicture}

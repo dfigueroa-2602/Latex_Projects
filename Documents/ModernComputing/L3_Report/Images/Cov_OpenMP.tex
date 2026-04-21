@@ -1,0 +1,28 @@
+\begin{tikzpicture}
+    \pgfplotsset{
+        set layers,
+        every axis legend/.style={
+            cells = {anchor = east},% Centered entries
+            anchor = north east,
+            font = \footnotesize,
+            shape = rectangle,
+            fill = white,
+            draw = black,
+            at = {(1,1)}
+            }
+    }
+    \begin{axis}[
+        xlabel = {Number of processes[-]},
+        ylabel = {Time [s]},
+        ymin = 0,
+        ymax = 65,
+        xmin = 1,
+        xmax = 40,
+        symbolic x coords = {1,2,4,8,16,20,30,40},
+        xtick = data,
+        grid = both
+        ]
+        \addplot[red, mark=x, mark size=4pt] table[x=N_Threads, y=Cov_Matrix] {Data/openMP_CovMatrix.dat};
+        \label{Covmat}
+    \end{axis}
+\end{tikzpicture}

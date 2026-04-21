@@ -1,8 +1,11 @@
 %!TeX root = main.tex
-
-The objective of this laboratory session is to accelerate the computation of the covariance matrix, but using the (Message Passing Interface) \texttt{MPI} library. The \texttt{MPI} library is a standard for parallel programming that allows processes to communicate with each other by sending and receiving messages. It is widely used in high-performance computing applications, where the computational workload can be distributed across multiple processors or nodes.
-
-In the previous laboratory session, it was observed that, after implementing the parallelisation using \texttt{OpenMP}, the execution times for different numbers of threads were decreasing, as it was shown in \Cref{tab:Ex_times_openMP}.
+The objective of this laboratory session is to parallelise the computation of the
+covariance matrix using the Message Passing Interface (\texttt{MPI}) library. Unlike
+the shared-memory model of \texttt{OpenMP}, \texttt{MPI} distributes work across
+independent processes that communicate by explicitly passing messages, making it
+suitable for both multi-core nodes and multi-node clusters. The results are compared
+against the \texttt{OpenMP} implementation from the previous session, whose execution
+times are reproduced in \Cref{tab:Ex_times_OpenMP} for reference.
 
 \begin{table}[ht!]
     \centering
@@ -13,32 +16,49 @@ In the previous laboratory session, it was observed that, after implementing the
         | >{\centering\arraybackslash}X |
     }
         \hline
-        \textbf{Number of Threads} & \textbf{Derived Variables} [s] & \textbf{Mean Values} [s] & \textbf{Cov. Matrix} [s]\\
+        \textbf{Number of Processes} & \textbf{Derived Variables} [s] & \textbf{Mean Values} [s] & \textbf{Cov.\ Matrix} [s]\\
         \hline
-        1 & 62.82 &	2.26 &	16.12\\
-        2 &	31.64 &	1.08 &  9.42\\
-        4 &	12.82 &	0.72 &	6.51\\
-        8 &	6.74  &	0.53 &	5.34\\
-        16&	3.57  &	0.48 &	3.33\\
-        20&	3.84  &	0.51 &	3.13\\
-        30&	2.80  &	0.46 &	3.60\\
-        40&	2.65  &	0.52 & 	3.59\\
+        1  & 62.82 & 2.26 & 16.12 \\
+        2  & 31.64 & 1.08 &  9.42 \\
+        4  & 12.82 & 0.72 &  6.51 \\
+        8  &  6.74 & 0.53 &  5.34 \\
+        16 &  3.57 & 0.48 &  3.33 \\
+        20 &  3.84 & 0.51 &  3.13 \\
+        30 &  2.80 & 0.46 &  3.60 \\
+        40 &  2.65 & 0.52 &  3.59 \\
         \hline
     \end{tabularx}
-    \caption{Execution times for different numbers of threads using \texttt{openMP}.}
-    \label{tab:Ex_times_openMP}
+    \caption{Execution times for different numbers of processes using \texttt{OpenMP}.}
+    \label{tab:Ex_times_OpenMP}
 \end{table}
 
-In the \Cref{fig:Cov_openMP_graph}, the execution times for the calculation of the covariance matrix are plotted as a function of the number of threads.
+\Cref{fig:Cov_OpenMP_graph} shows the covariance matrix execution time as a
+function of thread count. Speedup is most pronounced up to 16 processes, after which
+the curve flattens, indicating that synchronisation overhead and memory-bandwidth
+saturation limit further gains.
 
 \begin{figure}[ht!]
     \centering
-    \input{Images/Cov_openMP.tex}
-    \caption{Execution time as a function of the number of threads.}
-    \label{fig:Cov_openMP_graph}
+    \input{Images/Cov_OpenMP.tex}
+    \caption{Covariance matrix execution time as a function of the number of
+             \texttt{OpenMP} processes.}
+    \label{fig:Cov_OpenMP_graph}
 \end{figure}
 
-Thanks to the parallelisation using \texttt{MPI}, the execution times for the calculation of the covariance matrix were significantly reduced, as it can be observed in \Cref{tab:Ex_times_MPI}.
+\filbreak
+
+\section{MPI Implementation and Performance}
+
+The execution times obtained with the \texttt{MPI} implementation are reported in
+\Cref{tab:Ex_times_MPI}. Compared to \texttt{OpenMP}, \texttt{MPI} achieves
+consistently lower times for the derived-variables stage at high process counts,
+reflecting the benefit of distributed memory parallelism. All processes read their
+portion of the input file simultaneously using collective I/O routines
+(\texttt{MPI\_File\_read\_at\_all}), which are designed to reduce I/O contention
+on parallel filesystems. The execution times reported in \Cref{tab:Ex_times_MPI}
+correspond to the \texttt{MPI~I/O} implementation. However, an anomalous increase
+in the derived-variables time is observed at 80~processes (5.30\,s versus 1.30\,s
+at 40), which is discussed in \Cref{sec:correctness}.
 
 \begin{table}[ht!]
     \centering
@@ -49,43 +69,85 @@ Thanks to the parallelisation using \texttt{MPI}, the execution times for the ca
         | >{\centering\arraybackslash}X |
     }
         \hline
-        \textbf{Number of Threads} & \textbf{Derived Variables} [s] & \textbf{Mean Values} [s] & \textbf{Cov. Matrix} [s]\\
+        \textbf{Number of Processes} & \textbf{Derived Variables} [s] & \textbf{Mean Values} [s] & \textbf{Cov. Matrix} [s]\\
         \hline
-        1 & 62.38 &	1.96 & 12.79\\
-        2 &	21.79 &	0.76 & 5.35 \\
-        4 &	10.18 &	0.35 & 2.72 \\
-        8 &	5.45  &	0.20 & 1.76 \\
-        16&	2.79  &	0.14 & 1.40 \\
-        20&	2.10  &	0.13 & 1.38 \\
-        30&	2.10  &	0.13 & 1.35 \\
-        40&	1.56  &	1.06 & 2.03 \\
-        80&	0.87  &	1.00 & 2.54 \\
+        1  & 47.71 & 1.94 & 14.10 \\
+        2  & 22.55 & 1.00 & 8.01  \\
+        4  & 12.50 & 0.81 & 6.46  \\
+        8  & 6.34  & 0.59 & 6.03  \\
+        16 & 3.21  & 0.43 & 4.03  \\
+        20 & 2.18  & 0.40 & 3.96  \\
+        30 & 1.72  & 0.28 & 2.67  \\
+        40 & 1.30  & 0.21 & 1.96  \\
+        80 & 5.30  & 0.27 & 2.01  \\
         \hline
     \end{tabularx}
-    \caption{Execution times for different numbers of threads using \texttt{MPI}.}
+    \caption{Execution times for different numbers of processes using \texttt{MPI}.}
     \label{tab:Ex_times_MPI}
 \end{table}
 
-In the \Cref{fig:Cov_MPI_graph}, the execution times for the calculation of the covariance matrix are plotted as a function of the number of threads.
+\begin{figure}[ht!]
+    \centering
+    \input{Images/Read_MPI.tex}
+    \caption{Read times using \texttt{MPI}.}
+    \label{fig:Read_MPI_graph}
+\end{figure}
+
+A notable anomaly appears in the read times of the \texttt{MPI I/O} implementation,
+as shown in \Cref{fig:Read_MPI_graph}. At low process counts (1, 2, 4, and~8),
+the collective I/O reads are significantly slower than the serial read performed
+by rank~0 in the standard \texttt{MPI} implementation. This is likely caused by
+the overhead of coordinating collective operations when the number of processes is
+small relative to the file size, as well as filesystem-level locking when multiple
+processes access contiguous blocks. Beyond 16~processes, the \texttt{MPI I/O}
+read times decrease sharply and become competitive with the standard variant,
+suggesting that the parallelism benefit only materialises once the per-process
+I/O chunk is small enough to be read concurrently without contention.
+
+\Cref{fig:Cov_MPI_graph} plots the covariance matrix execution time against the
+number of \texttt{MPI} processes. A direct comparison with the \texttt{OpenMP}
+results is given in \Cref{fig:Cov_comp_graph}.
+
 \begin{figure}[ht!]
     \centering
     \input{Images/Cov_MPI.tex}
-    \caption{Execution time as a function of the number of threads.}
+    \caption{Covariance matrix execution time as a function of the number of
+             \texttt{MPI} processes.}
     \label{fig:Cov_MPI_graph}
 \end{figure}
 
-A comparison between the execution times for the calculation of the covariance matrix using \texttt{openMP} and \texttt{MPI} is shown in \Cref{fig:Cov_comp_graph}.
+In \Cref{fig:Cov_comp_graph}, the covariance matrix execution times for
+\texttt{OpenMP} and \texttt{MPI} are plotted together for direct comparison.
+Both implementations show a similar trend of decreasing execution time with
+increasing thread/process count, but the \texttt{MPI} implementation consistently
+outperforms \texttt{OpenMP} at higher counts, likely due to better scalability on
+distributed memory systems. The ideal scaling lines based on the single-thread/process
+execution times are also included for reference, illustrating the deviation from
+perfect linear speedup as overheads become significant at higher parallelism levels.
 
 \begin{figure}[ht!]
     \centering
     \input{Images/Cov_comp.tex}
-    \caption{Comparison of execution times for the calculation of the covariance matrix using \texttt{openMP} and \texttt{MPI}.}
+    \caption{Comparison of covariance matrix execution times for \texttt{OpenMP}
+             and \texttt{MPI}.}
     \label{fig:Cov_comp_graph}
 \end{figure}
 
-\begin{figure}[ht!]
-    \centering
-    \input{Images/Read_comp.tex}
-    \caption{Comparison of read times \texttt{MPI} and \texttt{MPI i/o}.}
-    \label{fig:Read_comp_graph}
-\end{figure}
+\section{Correctness and Scalability\\of the MPI Implementation}
+\label{sec:correctness}
+
+The numerical correctness of the \texttt{MPI~I/O} implementation was verified by
+comparing the covariance coefficients produced at each process count against the
+serial reference (1~process). The reported entries are identical across all tested
+configurations (2, 4, 8, 16, 20, 30, 40, and~80 processes) to the precision
+printed by the program, confirming that the parallelisation introduces no
+numerical discrepancy.
+
+Performance, however, does not scale monotonically. The covariance matrix
+computation time decreases from 14.10~s at 1~process to 1.96~s at
+40~processes, but rises slightly to 2.01~s at 80~processes. A sharper
+regression appears in the derived-variables stage, where the time increases from
+1.30~s at 40~processes to 5.30~s at 80. This behaviour can be consistent
+with over-decomposition: once the per-process workload becomes small, the cost of
+collective operations such as \texttt{MPI\_Reduce} and inter-process
+synchronisation exceeds the computational saving from additional parallelism.
