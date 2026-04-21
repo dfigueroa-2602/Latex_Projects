@@ -12,18 +12,18 @@
             }
     }
     \begin{axis}[
-        xlabel = {Number of threads [-]},
+        xlabel = {Number of processes [-]},
         ylabel = {Time [s]},
-        title = {Execution times for different numbers of threads},
         ymin = 0,
-        ymax = 65,
         xmin = 1,
-        xmax = 40,
-        symbolic x coords = {1,2,4,8,16,20,30,40},
+        xmax = 80,
+        symbolic x coords = {1,2,4,8,16,20,30,40,80},
         xtick = data,
         grid = both
         ]
-        \addplot[red, mark=x, mark size=4pt] table[x=N_Threads, y=Cov_Matrix] {Data/openMP_CovMatrix.dat};
-        \label{Covmat}
+        \addplot[red, mark=x, mark size=4pt] table[x=N_Threads, y=Read_Time] {Data/MPI_io_CovMatrix.dat};
+        \label{read_MPI}
+
+        \addlegendimage{/pgfplots/refstyle=read_MPI}\addlegendentry{MPI I/O}
     \end{axis}
 \end{tikzpicture}

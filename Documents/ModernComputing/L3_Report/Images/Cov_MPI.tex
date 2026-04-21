@@ -12,7 +12,7 @@
             }
     }
     \begin{axis}[
-        xlabel = {Number of threads [-]},
+        xlabel = {Number of processes [-]},
         ylabel = {Time [s]},
         ymin = 0,
         ymax = 65,
@@ -22,14 +22,14 @@
         xtick = data,
         grid = both
         ]
-        \addplot[red, mark=x, mark size=4pt] table[x=N_Threads, y=Remaining_Values] {Data/MPI_CovMatrix.dat};
+        \addplot[red, mark=x, mark size=4pt] table[x=N_Threads, y=Remaining_Values] {Data/MPI_io_CovMatrix.dat};
         \label{Remval}
-        \addplot[blue, mark=x, mark size=4pt] table[x=N_Threads, y=Mean_Values] {Data/MPI_CovMatrix.dat};
+        \addplot[blue, mark=x, mark size=4pt] table[x=N_Threads, y=Mean_Values] {Data/MPI_io_CovMatrix.dat};
         \label{Meanval}
-        \addplot[green, mark=x, mark size=4pt] table[x=N_Threads, y=Cov_Matrix] {Data/MPI_CovMatrix.dat};
+        \addplot[green, mark=x, mark size=4pt] table[x=N_Threads, y=Cov_Matrix] {Data/MPI_io_CovMatrix.dat};
         \label{Covmat}
 
-        \addlegendimage{/pgfplots/refstyle=Remval}\addlegendentry{Missing Values}
+        \addlegendimage{/pgfplots/refstyle=Remval}\addlegendentry{Derived Values}
         \addlegendimage{/pgfplots/refstyle=Meanval}\addlegendentry{Mean Values}
         \addlegendimage{/pgfplots/refstyle=Covmat}\addlegendentry{Covariance Matrix}
     \end{axis}
