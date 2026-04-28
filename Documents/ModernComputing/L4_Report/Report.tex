@@ -1,0 +1,168 @@
+%!TeX root = main.tex
+
+The objective of this laboratory session is to elaborate a \texttt{Python} wrapper for the covariance matrix computation implemented in \texttt{C}. This enables to combine the strengths of both languages into a single workflow.
+
+Scientific computing often faces a fundamental trade-off: high-level languages 
+such as \texttt{Python} offer rapid development, readable syntax, and 
+straightforward debugging, while low-level languages such as \texttt{C} provide 
+direct memory control and computational efficiency. Rather than choosing one over the other, a common pattern in high performance computing (HPC) is to use each language for what it does best: \texttt{Python} as an orchestration layer, and \texttt{C} as the computational engine.
+
+This approach is particularly relevant for covariance matrix computation over 
+large datasets, where the mathematical operations are well-defined but 
+computationally expensive. As demonstrated in previous reports, parallelisation 
+strategies such as \texttt{OpenMP} allow \texttt{C} to exploit multi-core 
+architectures efficiently. The role of \texttt{Python} here is not to replace 
+this computation, but to provide a convenient interface to it.
+
+To benchmark this approach, two implementations are compared: one using 
+\texttt{Python}'s \texttt{NumPy} library, which provides vectorised operations 
+on the full dataset, and one using the \texttt{C}/\texttt{OpenMP} function called directly from \texttt{Python} via a subprocess wrapper since, as demonstrated in previous reports, the OpenMP implementation achieved the best execution times among the parallelisation strategies evaluated. This comparison illustrates the performance gap between interpreted and compiled code, even when the interpreted solution uses optimised numerical libraries.
+
+The wrapper is implemented as a \texttt{Python} class, \texttt{CovarianceOpenMP}, following an object-oriented design that encapsulates all communication with the \texttt{C} binary. The constructor stores the path to the executable and the desired number of threads, making the wrapper reusable across different configurations without modifying the calling code.
+
+\begin{minted}[breaklines, fontsize=\small]{python3}
+from __future__ import print_function, division
+import subprocess
+import time
+import re
+import os
+import numpy as np
+
+# C/MPI wrapper
+class CovarianceOpenMP(object):
+    def __init__(self, executable, n_threads = 4):
+        self.executable = executable
+        self.n_threads  = n_threads
+
+    def compute(self):
+        t_wall_start = time.time()
+\end{minted}
+
+The \texttt{compute()} method is responsible for launching the \texttt{C} 
+process. Since \texttt{OpenMP} controls parallelism through environment variables, \texttt{OMP\_NUM\_THREADS} is set before the process starts. The binary is then launched using \texttt{subprocess.Popen}, with \texttt{stdout} and \texttt{stderr} redirected to pipes so that the output can be captured and parsed programmatically rather than printed directly to the terminal.
+
+\begin{minted}[breaklines, fontsize=\small]{python3}
+        env = os.environ.copy()
+        env["OMP_NUM_THREADS"] = str(self.n_threads)
+
+        proc = subprocess.Popen(
+            [self.executable],
+            stdout  = subprocess.PIPE,
+            stderr  = subprocess.PIPE,
+            env     = env
+        )
+\end{minted}
+
+Once the process finishes, \texttt{proc.communicate()} blocks until all output 
+is received and the process exits. The return code is then checked to detect 
+failures early. Since \texttt{subprocess} returns raw bytes in some 
+\texttt{Python} versions, the output is decoded to a \texttt{UTF-8} string 
+before processing. Finally, two parsing methods extract the timing information 
+and the covariance matrix values from the captured output, which are returned 
+to the caller.
+
+\begin{minted}[breaklines, fontsize=\small]{python3}
+        print('Starting computation using the Python Wrapper with', self.n_threads, 'threads')
+        stdout, stderr = proc.communicate()
+        t_wall = time.time() - t_wall_start
+
+        if proc.returncode != 0:
+            raise RuntimeError(
+                "Process failed (code {0}):\n{1}".format(proc.returncode, stderr)
+            )
+
+        if isinstance(stdout, bytes):
+            stdout = stdout.decode("utf-8")
+
+        timings = self._parse_timings(stdout)
+        cov     = self._parse_cov(stdout)
+
+        return cov, timings, t_wall
+\end{minted}
+
+Thanks to the \texttt{NumPy} \texttt{Python} library, the covariance matrix calculation is straightforward, including in its instructions, the \texttt{np.cov(matrix)} function that calculates the covariance matrix with only one command. Nonetheless, the \texttt{dwarf} node has an old installed version of \texttt{Python} (2.6). In this version, the \texttt{NumPy} library does not include the cubic square-root, so it needs to be implemented:
+
+\begin{minted}[breaklines, fontsize=\small]{python3}
+def cbrt(x):
+    if x >= 0.0:
+        return x ** (1.0 / 3.0)
+    else:
+        return -((-x) ** (1.0 / 3.0))
+\end{minted}
+
+With the already defined \texttt{cbrt(x)} function, the computed variables can be calculated.
+
+\begin{minted}[breaklines, fontsize=\small]{python3}
+def compute_derived(var):
+    print("----- Computing derived variables -----")
+    comp    = [None] * 5
+    comp[0] = np.sin(var[0]) + np.cos(var[1])
+    comp[1] = np.exp(var[2]) + np.exp(-1.0 * var[3])
+    comp[2] = np.sin(var[0]) * np.cos(var[1]) + np.cos(var[2]) * np.sin(var[3])
+    comp[3] = np.hypot(var[1], var[2])
+    comp[4] = np.vectorize(cbrt)(var[4])
+    print("----- Derived variables computed -----")
+    return comp
+
+# Python Covariance Calculation
+def calc_cov(final_var, N):
+    print("----- Computing covariance -----")
+    matrix  = np.vstack(final_var)
+    cov     = np.cov(matrix)
+    print("----- Covariance computed -----")
+    return cov
+\end{minted}
+
+The output of the wrapper is given in the following output:
+
+\begin{minted}{bash}
+Starting computation using the Python NumPy functions
+Reading 134217728 samples...
+----- Reading variables from files -----
+----- Files read completed -----
+  Read time: 3.7787 sec
+----- Computing derived variables -----
+----- Derived variables computed -----
+  Compute variables time: 115.3501 sec
+  Computing covariance...
+----- Covariance computed -----
+  Covariance time: 316.6341 sec
+  cov(1,1): 0.333304
+
+Starting computation using the Python Wrapper with 40 threads
+  Wall time: 122.7729 sec
+  Internal C timings:
+    read  : 114.3998 sec
+    comp  : 2.8731 sec
+    mean  : 0.5191 sec
+    cov   : 3.5948 sec
+  cov[0,0]: 0.333304
+
+------------------------------------------------------------
+  SUMMARY (both on 134217728 samples)
+------------------------------------------------------------
+  NumPy  read : 3.7787 sec
+  NumPy  comp : 115.3501 sec
+  NumPy  cov  : 316.6341 sec
+  C/OpenMP cov: 3.5948 sec
+  Speedup (cov only): ~88.1x
+============================================================
+\end{minted}
+
+The results reveal an interesting asymmetry between the two implementations. 
+Regarding file reading, \texttt{NumPy}'s \texttt{np.fromfile} reads all 
+134 million elements in 3.78~sec, significantly faster than the \texttt{C} 
+sequential \texttt{fread} which required 114.40~sec. This is likely due to 
+\texttt{NumPy} using optimised buffered I/O internally.
+
+However, the advantage reverses decisively during computation. The derivation 
+of the five computed variables, which takes only 2.87~sec in \texttt{C} with 
+40 \texttt{OpenMP} threads, required 115.35~sec in \texttt{NumPy}, which can be explained by the overhead of applying \texttt{np.vectorize} to the 
+scalar \texttt{cbrt} function, which negates \texttt{NumPy}'s vectorisation 
+benefits. In contrast, when calculating the covariance matrix, \texttt{C}/\texttt{OpenMP} completes it in 3.59~sec, while \texttt{NumPy} requires 
+316.63~sec, yielding a speedup of approximately $88\times$.
+
+In conclusion, while \texttt{NumPy} provides competitive I/O performance, 
+the \texttt{C}/\texttt{OpenMP} implementation is vastly superior for 
+compute-intensive operations, demonstrating that compiled, parallelised code 
+remains the appropriate choice for large-scale numerical computation.
